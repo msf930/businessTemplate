@@ -1,0 +1,90 @@
+@media (max-width: 640px) {
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 80vh;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    position: relative;
+  }
+  .parallax {
+    left: 0;
+    width: 100vw;
+    height: 1000px;
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    place-items: center;
+    z-index: 9;
+    display: none;
+  }
+  .parallaxSm {
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    place-items: center;
+    z-index: 9;
+  }
+
+  .overlayText {
+    position: absolute;
+    top: 40vh;
+    left: 20px;
+    z-index: 11;
+  }
+  .overlayText h1 {
+    font-size: 4rem;
+    color: white;
+    z-index: 12;
+  }
+}
+
+@media (min-width: 640px) {
+  .container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 80vh;
+    overflow: hidden;
+    scroll-behavior: smooth;
+  }
+  .parallax {
+    left: 0;
+    width: calc(100vw - 100px);
+    height: 1000px;
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    place-items: center;
+    z-index: 9;
+  }
+  .parallaxSm {
+    display: none;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 1000px;
+    background: white;
+    z-index: 10;
+  }
+  .overlayText {
+    position: absolute;
+    top: 400px;
+    left: 200px;
+    z-index: 11;
+  }
+  .overlayText h1 {
+    font-size: 4rem;
+    color: white;
+  }
+}
