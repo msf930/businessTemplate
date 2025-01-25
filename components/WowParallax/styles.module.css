@@ -1,0 +1,26 @@
+.parallax{
+    left: 0;
+    top: 0;
+    width: 35vw;
+    height: 70vh;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+
+}
+.parallaxImgCont{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: calc(100vh + 70vh);
+    z-index: 1;
+}
+.parallaxImg{
+    position: relative;
+    margin-top: 70vh;
+    width: 100%;
+    height: 100vh;
+
+}

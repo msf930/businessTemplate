@@ -1,0 +1,166 @@
+@media only screen and (max-width: 600px) {
+    .wowContainer {
+        position: relative;
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+
+    }
+    .wowImgContainer {
+        width: 100vw;
+        height: 70vh;
+    }
+    .wowImg{
+        position: absolute;
+        display: flex;
+        width: 100%;
+        height: auto;
+        z-index: -1;
+    }
+    .wowMaskSvg{
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        clip-path: inset(0% 0% 0% 0%);
+        z-index: -1;
+    }
+    .wowTextContainer{
+        display: none;
+    }
+    .wowTextContainerSm{
+        margin-top: 90vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+
+    }
+    .wowTextTitleSm{
+        font-size: 2rem;
+        text-transform: uppercase;
+    }
+    .wowTextPSm{
+        font-size: 1.25rem; /* 20px */
+        line-height: 1.75rem; /* 28px */
+        margin-top: 1rem; /* 16px */
+        margin-left: 2rem; /* 80px */
+        margin-right: 2rem; /* 80px */
+    }
+    .wowButtonSm{
+        width: 150px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        color: white;
+        background-color: black;
+        border-radius: 0;
+        transition: border-radius .5s;
+    }
+    .wowButtonSm:hover{
+        color: white;
+        background-color: black;
+    }
+    .wowImgSm{
+
+    }
+}
+.heroContainer{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 9;
+}
+.wowContainer{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.wowImgContainer{
+    width: 50vw;
+    height: 70vh;
+}
+
+
+.wowImg{
+    position: absolute;
+    display: block;
+    width: 50%;
+    height: auto;
+    z-index: -1;
+}
+
+.wowMaskSvg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50vw;
+    height: 100vh;
+    clip-path: inset(10% 10% 0% 10%);
+    z-index: -1;
+}
+
+.wowMaskSvg2{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+
+}
+.wowMaskRect{
+    position: relative;
+    z-index: -1;
+}
+
+.wowTextContainer{
+    position: relative;
+    display: flex;
+    height: 100vh;
+    width: 50vw;
+}
+.textCont{
+    position: absolute;
+    bottom: 15%;
+    left: 0;
+    width: 30vw;
+    height: 40vh;
+
+
+
+}
+.wowTextTitle{
+    font-size: 3rem;
+    text-transform: uppercase;
+    text-align: left;
+}
+.wowTextContainerSm{
+    display: none;
+}
+
+.wowButton{
+    width: 150px;
+    margin-top: 50px;
+
+    color: white;
+    background-color: black;
+    border-radius: 0;
+    transition: border-radius .5s;
+}
+.wowButton:hover{
+    color: white;
+    background-color: black;
+}

@@ -7,6 +7,7 @@ import Why from "@/components/Why";
 import Services from "@/components/Services";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
+import NavBar from "@/components/NavBar";
 
 export default function Home() {
   // useEffect( () => {
@@ -20,6 +21,7 @@ export default function Home() {
 
   return (
     <main>
+        <NavBar/>
       <Hero2 />
       <Wow1 />
       <Why />
