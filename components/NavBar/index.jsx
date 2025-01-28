@@ -63,7 +63,7 @@ export default function Nav() {
                 <div className={styles.navImgCont}>
                     <Link href="/">
 
-                        <Image src="/Logo.png" alt="logo" height={70} width={70}/>
+                        <Image src="/RMTNLogo.png" alt="logo" height={70} width={70}/>
 
                     </Link>
                 </div>

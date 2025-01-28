@@ -1,6 +1,9 @@
 "use client";
 
 import { useEffect } from "react";
+
+import { motion, AnimatePresence } from "motion/react";
+
 import Hero2 from "../components/Hero2";
 import Wow1 from "../components/Wow1";
 import Why from "@/components/Why";
@@ -10,24 +13,23 @@ import Contact from "@/components/Contact";
 import NavBar from "@/components/NavBar";
 
 export default function Home() {
-  // useEffect( () => {
-  //     (
-  //         async () => {
-  //             const LocomotiveScroll = (await import('locomotive-scroll')).default
-  //             const locomotiveScroll = new LocomotiveScroll();
-  //         }
-  //     )()
-  // }, [])
 
   return (
-    <main>
-        <NavBar/>
-      <Hero2 />
-      <Wow1 />
-      <Why />
-      <Services />
-      <Testimonials />
-      <Contact />
-    </main>
+      <AnimatePresence>
+          <motion.div
+              initial={{opacity: 0}}
+              animate={{opacity: 1}}
+              transition={{ease: "easeIn", duration: 1.0}}
+              exit={{opacity: 0, transition: {duration: 0.8}}}
+          >
+              <NavBar/>
+              <Hero2 />
+              <Wow1 />
+              <Why />
+              <Services />
+              <Testimonials />
+              <Contact />
+        </motion.div>
+      </AnimatePresence>
   );
 }

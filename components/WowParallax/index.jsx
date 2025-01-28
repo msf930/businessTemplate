@@ -32,7 +32,7 @@ export default function MultiLayerParallax() {
                 }}
             >
                 <div className={styles.parallaxImg}>
-                    <Image src="/WowParallax.jpg" alt="park with trees" fill objectFit="cover"  />
+                    <Image src="/RMTNProj1.jpg" alt="park with trees" fill objectFit="cover"  />
                 </div>
             </motion.div>
 

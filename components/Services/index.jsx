@@ -1,47 +1,52 @@
 import React from 'react';
 import Image from "next/image";
 import {Button} from "@mui/material";
-import Services1 from "@/public/Services1.jpg"
-import Services2 from "@/public/Services2.jpg"
-import Services3 from "@/public/Services3.jpg"
+import Services1 from "@/public/kitchenServ2.jpg"
+import Services2 from "@/public/bathServ.jpg"
+import Services3 from "@/public/bedroomServ.jpg"
 import Link from "next/link";
+
+import styles from "./styles.module.css";
 
 const Index = () => {
     return (
         <div className="flex flex-col mt-24 bg-gray-100">
-            <div className="serviceTitle">
+            <div className={styles.serviceTitle}>
                 <h1>Our Services Include</h1>
             </div>
-            <div className="serviceContainer">
-                <Link href="services/Preconstruction" className="serviceItemContainer">
-                    <div className="serviceItemText">Preconstruction</div>
-                    <Image className="serviceItemImg" src={Services1} alt="img" width="100%" placeholder="blur" />
+            <div className={styles.serviceContainer}>
+                <Link href="services/Preconstruction" className={styles.serviceItemContainer}>
+                    <div className={styles.serviceItemText}>Kitchen</div>
+                    <div className={styles.serviceItemTextLearn}>Learn More</div>
+                    <Image className={styles.serviceItemImg} src={Services1} alt="img"  placeholder="blur" fill objectFit="cover" />
                 </Link>
-                <Link href="services/Construction Management" className="serviceItemContainer">
-                    <h1 className="serviceItemText">Construction Management</h1>
-                    <Image className="serviceItemImg" src={Services2} alt="img" width="100%" placeholder="blur" />
+                <Link href="services/Construction Management" className={styles.serviceItemContainer}>
+                    <h1 className={styles.serviceItemText}>Bath</h1>
+                    <div className={styles.serviceItemTextLearn}>Learn More</div>
+                    <Image className={styles.serviceItemImg} src={Services2} alt="img"  placeholder="blur" fill objectFit="cover" />
                 </Link>
-                <Link href="services/Project Management" className="serviceItemContainer">
-                    <h1 className="serviceItemText">Project Management</h1>
-                    <Image className="serviceItemImg" src={Services3} alt="img" width="100%" placeholder="blur" />
+                <Link href="services/Project Management" className={styles.serviceItemContainer}>
+                    <h1 className={styles.serviceItemText}>Bed</h1>
+                    <div className={styles.serviceItemTextLearn}>Learn More</div>
+                    <Image className={styles.serviceItemImg} src={Services3} alt="img"  placeholder="blur" fill objectFit="cover" />
                 </Link>
             </div>
-            <div className="serviceContainerSm">
-                <div  className="serviceItemContainer">
-                    <Link href="services/Preconstruction" className="serviceItemText">Preconstruction</Link>
-                    <Image className="serviceItemImg" src={Services1} alt="img" width="100%" placeholder="blur" />
+            <div className={styles.serviceContainerSm}>
+                <div  className={styles.serviceItemContainer}>
+                    <Link href="services/Preconstruction" className={styles.serviceItemText}>Preconstruction</Link>
+                    <Image className={styles.serviceItemImg} src={Services1} alt="img" width="100%" placeholder="blur" />
                 </div>
-                <div  className="serviceItemContainer">
-                    <Link href="services/Construction Management"className="serviceItemText">Construction Management</Link>
-                    <Image className="serviceItemImg" src={Services2} alt="img" width="100%" placeholder="blur" />
+                <div  className={styles.serviceItemContainer}>
+                    <Link href="services/Construction Management"className={styles.serviceItemText}>Construction Management</Link>
+                    <Image className={styles.serviceItemImg} src={Services2} alt="img" width="100%" placeholder="blur" />
                 </div>
-                <div  className="serviceItemContainer">
-                    <Link href="services/Project Management" className="serviceItemText">Project Management</Link>
-                    <Image className="serviceItemImg" src={Services3} alt="img" width="100%" placeholder="blur" />
+                <div  className={styles.serviceItemContainer}>
+                    <Link href="services/Project Management" className={styles.serviceItemText}>Project Management</Link>
+                    <Image className={styles.serviceItemImg} src={Services3} alt="img" width="100%" placeholder="blur" />
                 </div>
             </div>
             <div className="mt-24 mb-24 text-center">
-                <Button href="/services" className="serviceButton">See All Services</Button>
+                <Button href="/services" className={styles.serviceButton}>See All Services</Button>
             </div>
         </div>
     );

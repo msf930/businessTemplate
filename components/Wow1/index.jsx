@@ -18,7 +18,7 @@ const Index = () => {
             <div className={styles.wowTextContainer}>
                 <div className={styles.textCont}>
                     <h1 className={styles.wowTextTitle}>Leading The Industry</h1>
-                    <p className="text-xl  text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    <p className={styles.wowBodyText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Duis malesuada ipsum eu enim suscipit, vitae facilisis dolor
                         fermentum. Nulla aliquet mi vel nisi semper tempus. </p>
                     <Button className={styles.wowButton} href="/about">About</Button>

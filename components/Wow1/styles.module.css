@@ -68,6 +68,16 @@
 
     }
 }
+.wowContainer{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
 .heroContainer{
     position: relative;
     display: flex;
@@ -77,15 +87,6 @@
     height: 100vh;
     overflow: hidden;
     z-index: 9;
-}
-.wowContainer{
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    display: flex;
-    justify-items: center;
-    align-items: center;
 }
 
 .wowImgContainer{
@@ -134,26 +135,25 @@
 }
 .textCont{
     position: absolute;
-    bottom: 15%;
+    bottom: 20vh;
     left: 0;
-    width: 30vw;
-    height: 40vh;
-
-
-
+    width: 40vw;
+    height: auto;
 }
 .wowTextTitle{
-    font-size: 3rem;
+    font-size: 4vw;
     text-transform: uppercase;
     text-align: left;
 }
 .wowTextContainerSm{
     display: none;
 }
-
+.wowBodyText{
+    padding-bottom: 50px;
+}
 .wowButton{
     width: 150px;
-    margin-top: 50px;
+
 
     color: white;
     background-color: black;

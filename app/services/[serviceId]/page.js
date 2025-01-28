@@ -8,14 +8,7 @@ const Page = ({ params }) => {
     const [service, setService] = useState(decodeURI(params.serviceId));
     const [serviceImg, setServiceImg] = useState(`/${service}.jpg`);
     const [serviceImg2, setServiceImg2] = useState(`/${service}2.jpg`);
-    useEffect( () => {
-        (
-            async () => {
-                const LocomotiveScroll = (await import('locomotive-scroll')).default
-                const locomotiveScroll = new LocomotiveScroll();
-            }
-        )()
-    }, [])
+
     return (
         <div>
             <div className="flex flex-col text-center">

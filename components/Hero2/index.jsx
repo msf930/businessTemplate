@@ -6,7 +6,7 @@ import Image from "next/image";
 
 import {Button} from "@mui/material";
 
-import heroHome from "@/public/homeHero.jpg";
+import heroHome from "@/public/HomeHeroNew.jpg";
 
 export default function Index() {
   const ref = useRef(null);
