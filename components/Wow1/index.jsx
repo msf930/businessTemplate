@@ -31,7 +31,9 @@ const Index = () => {
                     Duis malesuada ipsum eu enim suscipit, vitae facilisis dolor
                     fermentum. Nulla aliquet mi vel nisi semper tempus. </p>
                 <Button className={styles.wowButtonSm} href="/about">About</Button>
-                <img src="/Hero2.jpg" alt="building" className={styles.wowImgSm}/>
+                <div className={styles.heroContainerSm} >
+                    <WowParallax />
+                </div>
             </div>
         </div>
         );

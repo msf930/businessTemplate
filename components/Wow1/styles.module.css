@@ -8,10 +8,19 @@
         justify-content: center;
         text-align: center;
         align-items: center;
-
     }
     .heroContainer{
         display: none;
+    }
+    .heroContainerSm {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: auto;
+        overflow: hidden;
+        z-index: 9;
     }
     .wowImgContainer {
         width: auto;
