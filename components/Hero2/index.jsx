@@ -14,23 +14,27 @@ export default function Index() {
     target: ref,
     offset: ["start start", "end start"],
   });
+  const refSm = useRef(null);
+  const { scrollYProgressSm } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
 
   const backgroundY = useTransform(scrollYProgress, [0,0.5, 1], ["0%","50%", "100%"]);
   const backgroundYScroll = useTransform(scrollYProgress, [0,1], ["0%", "-100%"]);
+  const smBackgroundYScroll = useTransform(scrollYProgress, [0,1], ["0%", "20%"]);
 
   const overlayOpacity = useTransform(scrollYProgress, [0,0.5, 1], [0,0, 1]);
   const overlayOpacityText = useTransform(scrollYProgress, [0,0.6, 1], [1,0,0]);
 
   return (
-    <motion.div className={styles.container} >
-      <motion.div
+    <motion.div
+        className={styles.container}
         ref={ref}
-        //className="w-[calc(100% - 200px)] left-[100px] h-screen overflow-hidden relative grid place-items-center"
-        className={styles.parallax}
+    >
+      <motion.div
+       className={styles.parallax}
         style={{
-          // backgroundImage: `url(/homeHeroHouse.png)`,
-          // backgroundPosition: "center",
-          // backgroundSize: "cover",
           y: backgroundY,
         }}
       >
@@ -75,18 +79,28 @@ export default function Index() {
           </motion.div>
         </motion.div>
       </motion.div>
-      <div className={styles.parallaxSm}>
-        <div className="absolute inset-0 z-10">
+      <motion.div className={styles.parallaxSm}>
+        <motion.div
+            // className="absolute inset-0 z-10"
+            className={styles.parallaxSm}
+            style={{
+              y: smBackgroundYScroll,
+            }}
+        >
           <Image src={heroHome} alt="House with lawn" objectFit="cover" fill />
-        </div>
+        </motion.div>
         <div className={styles.overlayText}>
           <h1>
-            National
+            Rocky Mountain
             <br />
-            Construction
+            Remodels
           </h1>
+          <div className={styles.buttonCont}>
+            <Button variant="outlined" className={styles.wowButton} href="/about">303-111-2222</Button>
+
+          </div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }

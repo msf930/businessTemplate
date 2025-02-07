@@ -5,8 +5,7 @@
         height: 70px;
         z-index: 200;
         margin-top: -1px;
-
-        /*overflow: hidden;*/
+        overflow-x: hidden;
     }
     .navCont {
         display: none;

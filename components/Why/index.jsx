@@ -1,32 +1,34 @@
 import React from 'react';
 
+import styles from './styles.module.css';
+
 const Index = () => {
     return (
-        <div className="whyContainer">
+        <div className={styles.whyContainer}>
             <div>
-                <h1 className="whyTitle">Why Choose Us</h1>
+                <h1 className={styles.whyTitle}>Why Choose Us</h1>
             </div>
-            <div className="whyItemContainer">
-                <div className="whyItem">
-                    <h1 className="whyItemTitle">Easy Financing</h1>
-                    <p className="whyItemBody">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            <div className={styles.whyItemContainer}>
+                <div className={styles.whyItem}>
+                    <h1 className={styles.whyItemTitle}>Easy Financing</h1>
+                    <p className={styles.whyItemBody}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     </p>
                 </div>
-                <div className="whyItem">
-                    <h1 className="whyItemTitle">Free <br/> Consultations</h1>
-                    <p className="whyItemBody">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                <div className={styles.whyItem}>
+                    <h1 className={styles.whyItemTitle}>Free <br/> Consultations</h1>
+                    <p className={styles.whyItemBody}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     </p>
                 </div>
-                <div className="whyItem">
-                    <h1 className="whyItemTitle">Award Winning
+                <div className={styles.whyItem}>
+                    <h1 className={styles.whyItemTitle}>Award Winning
                         Service</h1>
-                    <p className="whyItemBody">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    <p className={styles.whyItemBody}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     </p>
                 </div>
-                <div className="whyItem">
-                    <h1 className="whyItemTitle">Licensed &
+                <div className={styles.whyItem}>
+                    <h1 className={styles.whyItemTitle}>Licensed &
                         Insured</h1>
-                    <p className="whyItemBody">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    <p className={styles.whyItemBody}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     </p>
                 </div>
             </div>

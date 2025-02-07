@@ -1,15 +1,20 @@
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 640px) {
     .wowContainer {
         position: relative;
         display: flex;
-        height: 100vh;
+        flex-direction: column-reverse;
+        height: auto;
+        width: 100vw;
         justify-content: center;
         text-align: center;
         align-items: center;
 
     }
+    .heroContainer{
+        display: none;
+    }
     .wowImgContainer {
-        width: 100vw;
+        width: auto;
         height: 70vh;
     }
     .wowImg{
@@ -32,7 +37,8 @@
         display: none;
     }
     .wowTextContainerSm{
-        margin-top: 90vh;
+        padding-top: 20px;
+        width: 100vw;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -65,102 +71,112 @@
         background-color: black;
     }
     .wowImgSm{
-
+      width: 100vw;
+        display: block;
     }
 }
-.wowContainer{
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    display: flex;
-    justify-items: center;
-    align-items: center;
-}
+@media only screen and (min-width: 640px) {
+    .wowContainer {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        display: flex;
+        justify-items: center;
+        align-items: center;
+    }
 
-.heroContainer{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50vw;
-    height: 100vh;
-    overflow: hidden;
-    z-index: 9;
-}
+    .heroContainer {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50vw;
+        height: 100vh;
+        overflow: hidden;
+        z-index: 9;
+    }
 
-.wowImgContainer{
-    width: 50vw;
-    height: 70vh;
-}
-
-
-.wowImg{
-    position: absolute;
-    display: block;
-    width: 50%;
-    height: auto;
-    z-index: -1;
-}
-
-.wowMaskSvg{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50vw;
-    height: 100vh;
-    clip-path: inset(10% 10% 0% 10%);
-    z-index: -1;
-}
-
-.wowMaskSvg2{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-
-}
-.wowMaskRect{
-    position: relative;
-    z-index: -1;
-}
-
-.wowTextContainer{
-    position: relative;
-    display: flex;
-    height: 100vh;
-    width: 50vw;
-}
-.textCont{
-    position: absolute;
-    bottom: 20vh;
-    left: 0;
-    width: 40vw;
-    height: auto;
-}
-.wowTextTitle{
-    font-size: 4vw;
-    text-transform: uppercase;
-    text-align: left;
-}
-.wowTextContainerSm{
-    display: none;
-}
-.wowBodyText{
-    padding-bottom: 50px;
-}
-.wowButton{
-    width: 150px;
+    .wowImgContainer {
+        width: 50vw;
+        height: 70vh;
+    }
 
 
-    color: white;
-    background-color: black;
-    border-radius: 0;
-    transition: border-radius .5s;
-}
-.wowButton:hover{
-    color: white;
-    background-color: black;
+    .wowImg {
+        position: absolute;
+        display: block;
+        width: 50%;
+        height: auto;
+        z-index: -1;
+    }
+
+    .wowMaskSvg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50vw;
+        height: 100vh;
+        clip-path: inset(10% 10% 0% 10%);
+        z-index: -1;
+    }
+
+    .wowMaskSvg2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+
+    }
+
+    .wowMaskRect {
+        position: relative;
+        z-index: -1;
+    }
+
+    .wowTextContainer {
+        position: relative;
+        display: flex;
+        height: 100vh;
+        width: 50vw;
+    }
+
+    .textCont {
+        position: absolute;
+        bottom: 20vh;
+        left: 0;
+        width: 40vw;
+        height: auto;
+    }
+
+    .wowTextTitle {
+        font-size: 4vw;
+        text-transform: uppercase;
+        text-align: left;
+    }
+
+    .wowTextContainerSm {
+        display: none;
+    }
+
+    .wowBodyText {
+        padding-bottom: 50px;
+    }
+
+    .wowButton {
+        width: 150px;
+
+
+        color: white;
+        background-color: black;
+        border-radius: 0;
+        transition: border-radius .5s;
+    }
+
+    .wowButton:hover {
+        color: white;
+        background-color: black;
+    }
 }
