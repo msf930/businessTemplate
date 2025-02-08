@@ -5,20 +5,28 @@ import styles from "./styles.module.css";
 import Image from "next/image";
 
 import {Button} from "@mui/material";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import heroHome from "@/public/HomeHeroNew.jpg";
 
+
+
+
 export default function Index() {
+  const theme = createTheme({
+    border: '1px solid',
+    palette: {
+      primary: {
+        main: '#FFFFFF'
+      },
+    },
+  });
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
-  const refSm = useRef(null);
-  const { scrollYProgressSm } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
+
 
   const backgroundY = useTransform(scrollYProgress, [0,0.5, 1], ["0%","50%", "100%"]);
   const backgroundYScroll = useTransform(scrollYProgress, [0,1], ["0%", "-100%"]);
@@ -74,9 +82,11 @@ export default function Index() {
               animate={{x: 0, opacity: 1}}
               transition={{ease: "easeInOut", duration: 0.8}}
           >
-            <Button variant="outlined" className={styles.wowButton} href="/about">303-111-2222</Button>
-            <Button variant="outlined" className={styles.wowButton} href="/about">About</Button>
-          </motion.div>
+            <ThemeProvider theme={theme}>
+            <Button variant="outlined" className={styles.wowButton2} href={`tel:13031112222`}>303-111-2222</Button>
+            <Button variant="outlined" className={styles.wowButton2} href="/about">About</Button>
+            </ThemeProvider>
+            </motion.div>
         </motion.div>
       </motion.div>
       <motion.div className={styles.parallaxSm}>
@@ -96,8 +106,14 @@ export default function Index() {
             Remodels
           </h1>
           <div className={styles.buttonCont}>
-            <Button variant="outlined" className={styles.wowButton} href="/about">303-111-2222</Button>
-
+            <ThemeProvider theme={theme}>
+              <Button
+                  variant="outlined"
+                  color="primary"
+                  className={styles.wowButton2}
+                  href="/about">303-111-2222
+              </Button>
+            </ThemeProvider>
           </div>
         </div>
       </motion.div>

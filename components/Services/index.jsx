@@ -33,15 +33,15 @@ const Index = () => {
             </div>
             <div className={styles.serviceContainerSm}>
                 <div  className={styles.serviceItemContainer}>
-                    <Link href="services/Preconstruction" className={styles.serviceItemText}>Preconstruction</Link>
-                    <Image className={styles.serviceItemImg} src={Services1} alt="img" width="100%" placeholder="blur" />
+                    <Link href="services/Preconstruction" className={styles.serviceItemText}>Kitchen</Link>
+                    <Image className={styles.serviceItemImg} src={Services1} alt="img" fill objectFit="cover" placeholder="blur" />
                 </div>
                 <div  className={styles.serviceItemContainer}>
-                    <Link href="services/Construction Management"className={styles.serviceItemText}>Construction Management</Link>
+                    <Link href="services/Construction Management"className={styles.serviceItemText}>Bath</Link>
                     <Image className={styles.serviceItemImg} src={Services2} alt="img" width="100%" placeholder="blur" />
                 </div>
                 <div  className={styles.serviceItemContainer}>
-                    <Link href="services/Project Management" className={styles.serviceItemText}>Project Management</Link>
+                    <Link href="services/Project Management" className={styles.serviceItemText}>Bed</Link>
                     <Image className={styles.serviceItemImg} src={Services3} alt="img" width="100%" placeholder="blur" />
                 </div>
             </div>

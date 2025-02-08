@@ -401,19 +401,19 @@ body {
 
     }
 }
-.wowButton{
-    width: 150px;
-    margin-top: 50px;
-    margin-left: 5rem;
-    color: white;
-    background-color: black;
-    border-radius: 0;
-    transition: border-radius .5s;
-}
-.wowButton:hover{
-    color: white;
-    background-color: black;
-}
+/*.wowButton{*/
+/*    width: 150px;*/
+/*    margin-top: 50px;*/
+/*    margin-left: 5rem;*/
+/*    color: white;*/
+/*    background-color: black;*/
+/*    border-radius: 0;*/
+/*    transition: border-radius .5s;*/
+/*}*/
+/*.wowButton:hover{*/
+/*    color: white;*/
+/*    background-color: black;*/
+/*}*/
 
 .whyContainer{
     margin-top: 0px;
