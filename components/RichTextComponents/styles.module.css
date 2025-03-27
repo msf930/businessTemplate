@@ -1,0 +1,24 @@
+.blockH1{
+    font-size: var(--font-size-h1);
+    /*font-family: var(--afacad_flux-font);*/
+    margin: 8px 0;
+}
+.blockH2{
+    font-size: var(--font-size-h2);
+    /*font-family: var(--afacad_flux-font);*/
+    margin: 8px 0;
+}
+.blockH3{
+    font-size: var(--font-size-h3);
+    /*font-family: var(--afacad_flux-font);*/
+    margin: 8px 0;
+}
+.blockH4{
+    font-size: var(--font-size-h4);
+    /*font-family: var(--afacad_flux-font);*/
+    margin: 8px 0;
+}
+.blockP{
+    font-size: var(--font-size-p);
+    margin: 8px 0;
+}

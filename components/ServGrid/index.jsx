@@ -8,143 +8,62 @@ import Serv5 from "@/public/Supply Chain Management.jpg";
 import Serv6 from "@/public/Virtual Design And Construction.jpg";
 import Link from "next/link";
 
-const Index = () => {
+
+import { client } from "@/sanity/lib/client";
+
+const SERVICE_QUERY = `*[_type == "services"] {_id, slug, title, description, mainImage { asset -> { _id, url } } }`;
+const SERVICE_ORDER_QUERY = `*[_type == "servicesOrder"]{ services }`;
+
+const options = { next: { revalidate: 30 } };
+
+const Index = async () => {
+
+    const posts = await client.fetch(SERVICE_QUERY, {}, options);
+    const orderObj = await client.fetch(SERVICE_ORDER_QUERY, {}, options);
+
+    const order = orderObj[0].services;
+
+    const orderedPosts = [];
+
+    order.forEach(orderItem => {
+        const matchedPost = posts.find(post => post._id === orderItem._ref);
+        if (matchedPost) {
+            orderedPosts.push(matchedPost);
+        }
+    });
+
+    // console.log(orderedPosts);
     return (
+        <div>
         <div className="ServGridContainer">
             <div className="ServGridRows">
                 <div className="ServGridCol">
-                    <div className="ServGridItem">
-                        <Link href="services/Preconstruction">
+                {orderedPosts.map((post, index) => (
+                    <div key={index} className="ServGridItem">
+                        <Link href={`services/${post.slug.current}`}>
                             <div className="ServImgItemCont">
                                 <h1 className="ServImgText">Learn More</h1>
                                 <Image
-                                    src={Serv1}
-                                    alt="Construction"
-                                    width="100%"
+                                    src={post.mainImage.asset.url}
+                                    alt={post.title}
+                                    objectFit="cover"
+                                    fill
                                     className="ServGridImg"
-                                    placeholder="blur"
-
+                                    //placeholder="blur"
                                 />
                             </div>
                             <div className="ServGridTextItem">
-                                <h1 className="ServGridItemTextTitle">Preconstruction</h1>
-                                <p className="ServGridItemTextP">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Duis malesuada ipsum eu enim suscipit, vitae facilisis dolor fermentum.
-                                </p>
+                                <h1 className="ServGridItemTextTitle">{post.title}</h1>
+                                <p className="ServGridItemTextP">{post.description}</p>
                             </div>
                         </Link>
                     </div>
-                    <div className="ServGridItem">
-                            <Link href="services/Construction Management">
-                                <div className="ServImgItemCont">
-                                    <h1 className="ServImgText">Learn More</h1>
-                                    <Image
-                                        src={Serv2}
-                                        alt="Construction"
-                                        width="100%"
-                                        className="ServGridImg"
-                                        placeholder="blur"
-
-                                    />
-                                </div>
-                                <div className="ServGridTextItem">
-                                    <h1 className="ServGridItemTextTitle">Construction Management</h1>
-                                    <p className="ServGridItemTextP">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Duis malesuada ipsum eu enim suscipit, vitae facilisis dolor fermentum.
-                                    </p>
-                                </div>
-                            </Link>
-                    </div>
-                    <div className="ServGridItem">
-                            <Link href="services/Project Management">
-                                <div className="ServImgItemCont">
-                                    <h1 className="ServImgText">Learn More</h1>
-                                    <Image
-                                        src={Serv3}
-                                        alt="Construction"
-                                        width="100%"
-                                        className="ServGridImg"
-                                        placeholder="blur"
-
-                                    />
-                                </div>
-                                <div className="ServGridTextItem">
-                                    <h1 className="ServGridItemTextTitle">Project Management</h1>
-                                    <p className="ServGridItemTextP">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Duis malesuada ipsum eu enim suscipit, vitae facilisis dolor fermentum.
-                                    </p>
-                                </div>
-                            </Link>
-                    </div>
-                </div>
-                <div className="ServGridCol">
-                    <div className="ServGridItem">
-                            <Link href="services/Lean Construction">
-                                <div className="ServImgItemCont">
-                                    <h1 className="ServImgText">Learn More</h1>
-                                    <Image
-                                        src={Serv4}
-                                        alt="Construction"
-                                        width="100%"
-                                        className="ServGridImg"
-                                        placeholder="blur"
-
-                                    />
-                                </div>
-                                <div className="ServGridTextItem">
-                                    <h1 className="ServGridItemTextTitle">Lean Construction</h1>
-                                    <p className="ServGridItemTextP">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Duis malesuada ipsum eu enim suscipit, vitae facilisis dolor fermentum.
-                                    </p>
-                                </div>
-                            </Link>
-
-                    </div>
-                    <div className="ServGridItem">
-                            <Link href="services/Supply Chain Management">
-                                <div className="ServImgItemCont">
-                                    <h1 className="ServImgText">Learn More</h1>
-                                    <Image
-                                        src={Serv5}
-                                        alt="Construction"
-                                        width="100%"
-                                        className="ServGridImg"
-                                        placeholder="blur"
-
-                                    />
-                                </div>
-                                <div className="ServGridTextItem">
-                                    <h1 className="ServGridItemTextTitle">Supply Chain Management</h1>
-                                    <p className="ServGridItemTextP">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Duis malesuada ipsum eu enim suscipit, vitae facilisis dolor fermentum.
-                                    </p>
-                                </div>
-                            </Link>
-                    </div>
-                    <div className="ServGridItem">
-                            <Link href="services/Virtual Design And Construction">
-                                <div className="ServImgItemCont">
-                                    <h1 className="ServImgText">Learn More</h1>
-                                    <Image
-                                        src={Serv6}
-                                        alt="Construction"
-                                        width="100%"
-                                        className="ServGridImg"
-                                        placeholder="blur"
-
-                                    />
-                                </div>
-                                <div className="ServGridTextItem">
-                                    <h1 className="ServGridItemTextTitle">Virtual Design & Construction</h1>
-                                    <p className="ServGridItemTextP">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Duis malesuada ipsum eu enim suscipit, vitae facilisis dolor fermentum.
-                                    </p>
-                                </div>
-                            </Link>
-                    </div>
-                </div>
+                ))}
 
             </div>
+        </div>
+
+        </div>
         </div>
     );
 };

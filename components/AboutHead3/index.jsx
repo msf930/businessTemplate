@@ -1,29 +1,37 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {client} from "@/sanity/lib/client";
+
+const ABOUT_QUERY = `*[_type == "aboutPage"] {_id, bottomText, bottomTextBody}`;
+const options = { next: { revalidate: 30 } };
 
 const Index = () => {
+
+    const [data, setData] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        setIsLoaded(false);
+        const fetchData = async () => {
+            const result = await client.fetch(ABOUT_QUERY, {}, options);
+            setData(result);
+        };
+        fetchData();
+        setIsLoaded(true);
+    }, []);
+
     return (
-        <div className="AboutHead3">
-            <h1 className="text-4xl font-bold mb-5 ">Our Culture</h1>
-            <div className="About3PContainer">
-                <div></div>
-                <p className="mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Duis malesuada ipsum eu enim suscipit, vitae facilisis dolor fermentum.
-                    Nulla aliquet mi vel nisi semper tempus.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Duis malesuada ipsum eu enim suscipit, vitae facilisis dolor fermentum.
-                    Nulla aliquet mi vel nisi semper tempus.
-                </p>
-                <p className="mb-8">Vivamus varius varius interdum. Vivamus ut enim ut diam dapibus porttitor.
-                    Fusce eget efficitur neque, quis pellentesque velit.
-                    Vestibulum nisl purus, viverra et interdum nec, porttitor eget mauris.
-                    In et tincidunt lectus, sit amet sagittis ipsum. Vestibulum mattis pretium suscipit.
-                </p>
-                <p className="mb-8">Cras convallis eros rhoncus ante aliquet mattis.
-                    Cras eu faucibus metus. Nunc vitae dui vehicula, lobortis dolor id, malesuada tortor.
-                    Nam mauris lectus, pellentesque non magna at, consectetur pharetra neque
-                </p>
-                <div></div>
-            </div>
-        </div>
+        <>
+            { data &&
+                <div className="AboutHead3">
+                    <h1 className="text-4xl font-bold mb-5 ">{data[0]?.bottomText}</h1>
+                    <div className="About3PContainer">
+                        <div></div>
+                       <p>{data[0]?.bottomTextBody}</p>
+                        <div></div>
+                    </div>
+                </div>
+            }
+        </>
     );
 };
 

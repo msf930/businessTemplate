@@ -1,13 +1,31 @@
 import { motion, useScroll, useTransform } from "motion/react";
-import React, { useRef } from "react";
+import React, {useEffect, useRef, useState} from "react";
 
 import styles from "./styles.module.css";
 
 import Image from "next/image";
+import {client} from "@/sanity/lib/client";
 
 
+const SECTION_QUERY = `*[_type == "homePage"] {_id, section2 { section2Image { asset -> { _id, url } } } }`;
+const options = { next: { revalidate: 30 } };
 
 export default function MultiLayerParallax() {
+
+
+    const [data, setData] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
+    useEffect(() => {
+        setIsLoaded(false);
+        const fetchData = async () => {
+            const result = await client.fetch(SECTION_QUERY, {}, options);
+            setData(result);
+            setIsLoaded(true);
+        };
+        fetchData();
+
+    }, []);
+
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -29,7 +47,8 @@ export default function MultiLayerParallax() {
                 }}
             >
                 <div className={styles.parallaxImg}>
-                    <Image src="/RMTNProj1.jpg" alt="park with trees" fill objectFit="cover"  />
+                    {isLoaded && <Image src={data[0]?.section2?.section2Image?.asset?.url} alt="park with trees" fill objectFit="cover"  />}
+
                 </div>
             </motion.div>
             <motion.div

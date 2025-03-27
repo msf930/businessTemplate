@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Image from "next/image";
 import Hero2 from '@/public/Hero2.jpg'
 import {Button} from "@mui/material";
@@ -9,18 +9,37 @@ import WowParallax from "@/components/WowParallax";
 
 import styles from "./styles.module.css";
 
+import {client} from "@/sanity/lib/client";
+
+const SECTION_QUERY = `*[_type == "homePage"] {_id, section2 { section2Image { asset -> { _id, url } }, section2Description, section2Title } }`;
+const options = { next: { revalidate: 30 } };
+
 const Index = () => {
+
+    const [data, setData] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        setIsLoaded(false);
+        const fetchData = async () => {
+            const result = await client.fetch(SECTION_QUERY, {}, options);
+            setData(result);
+            setIsLoaded(true);
+        };
+        fetchData();
+
+    }, []);
+
     return (
         <div className={styles.wowContainer}>
             <div className={styles.heroContainer} >
-               <WowParallax />
+                <WowParallax />
+
             </div>
             <div className={styles.wowTextContainer}>
                 <div className={styles.textCont}>
-                    <h1 className={styles.wowTextTitle}>Leading The Industry</h1>
-                    <p className={styles.wowBodyText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Duis malesuada ipsum eu enim suscipit, vitae facilisis dolor
-                        fermentum. Nulla aliquet mi vel nisi semper tempus. </p>
+                    <h1 className={styles.wowTextTitle}>{data[0]?.section2?.section2Title}</h1>
+                    <p className={styles.wowBodyText}>{data[0]?.section2?.section2Description}</p>
                     <Button className={styles.wowButton} href="/about">About</Button>
                  </div>
 

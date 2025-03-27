@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
-
 import { motion, AnimatePresence } from "motion/react";
 
 import Hero2 from "../components/Hero2";

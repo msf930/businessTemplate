@@ -1,51 +1,89 @@
-"use client";
 
-import React, {useEffect, useState} from 'react';
+
+import React from 'react';
 import {Button} from "@mui/material";
+import {client} from "@/sanity/lib/client";
+import NavBar from "@/components/NavBar";
+import SoloProjHero from "@/components/SoloProjHero";
+import {PortableText} from "next-sanity";
+import {RichTextComponents} from "@/components/RichTextComponents";
+import commaNumber from "comma-number";
 
-const Page = ({ params }) => {
+import Image from "next/image";
 
-    const [project, setProject] = useState(decodeURI(params.projId));
-    const [projectImg, setProjectImg] = useState(`/${project}.jpg`);
-    const [projectImg2, setProjectImg2] = useState(`/${project}2.jpg`);
-    useEffect( () => {
-        (
-            async () => {
-                const LocomotiveScroll = (await import('locomotive-scroll')).default
-                const locomotiveScroll = new LocomotiveScroll();
-            }
-        )()
-    }, [])
+import styles from "./styles.module.css";
+
+const PROJECT_QUERY = `*[_type == "projects" && slug.current == $projId][0] {_id, title, description, mainImage {alt, asset -> { _id, url } }, bodyText, slug, budget, duration, location, imageGallery[] { asset -> { _id, url } }, tag, testimonial, testimonialAuthor }`;
+const options = { next: { revalidate: 30 } };
+
+const Page = async ({ params }) => {
+
+    const { projId } = await params;
+
+    const project = await client.fetch(PROJECT_QUERY, {projId}, options);
+
+    let budgetString = 0;
+    if(project.budget){
+        budgetString =  commaNumber(project.budget);
+    }
+
     return (
         <div>
-            <div className="flex flex-col text-center">
-                <h1 className="text-4xl mt-28 font-bold capitalize mb-4">Project Info</h1>
-                <p className=" mb-10">Cutting-Edge Construction</p>
+            <NavBar/>
+            <div className="flex flex-col text-center bg-[#F5F5F5]">
+                <h1 className="text-4xl mt-28 font-bold capitalize mb-4">{project.title}</h1>
+                <p className=" mb-10">{project.description}</p>
             </div>
-            <div className="ServDynImgContainer">
-                <h1 className="ServeDynHeroText">{project}</h1>
-                <img src={projectImg} className="ServDynImg" data-scroll data-scroll-speed="-1"/>
-            </div>
-            <div className="ServDynImgContainerSm">
-                <h1 className="ServeDynHeroTextSm">{project}</h1>
-                <img src={projectImg} className="ServDynImgSm"/>
-            </div>
-
-            <div className="ServDynTextCont">
-                <div className="ServeDynTextLeft">
-                    <h1 className="font-bold text-4xl capitalize leading-relaxed"> {project} </h1>
-                    <p className="mt-8 text-left">Fusce ac elementum ante, in elementum dolor. Etiam vulputate orci et odio vehicula, id ultricies nulla congue. Donec commodo, tellus at feugiat pharetra, metus augue malesuada ex, a aliquam augue est nec neque.<br/><br/> In lacinia posuere nisl nec sodales. Nam eu venenatis ex, a aliquam tellus. Ut pretium, nulla eget consequat vehicula, nulla lacus aliquam orci, a iaculis nisl nulla ac dolor. Fusce placerat ac erat ac ullamcorper. <br/><br/>Fusce turpis ex, fringilla quis arcu ac, molestie rutrum sem. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer ligula arcu, gravida quis vehicula malesuada, aliquet sed lectus. Quisque malesuada, sem ac rutrum congue, velit massa lacinia felis, ut laoreet purus enim vel turpis.</p>
+            <SoloProjHero image={project.mainImage.asset.url} altText={project.mainImage.alt ? project.mainImage.alt : project.title}/>
+            <div className={styles.ProjectInfoContainer}>
+                <div className={styles.ProjectTitleContainer}>
+                    <h1 className={styles.ProjectTitle}>{project.title}</h1>
+                    {project?.tag &&
+                        <p className={styles.ProjectTag}>{project.tag}</p>
+                    }
                 </div>
-                <div className="ServeDynTextRight">
-                    <img src={projectImg2} className="ServDynImg2"/>
-
+                <div className={styles.ProjectDetailsContainer}>
+                    {project?.budget &&
+                        <div className={styles.ProjectInfoItem}>
+                            <h1 className={styles.ProjectInfoTitle}>Budget</h1>
+                            <p className={styles.ProjectInfoText}>${budgetString}</p>
+                        </div>
+                    }
+                    {project?.duration &&
+                        <div className={styles.ProjectInfoItem}>
+                            <h1 className={styles.ProjectInfoTitle}>Duration</h1>
+                            <p className={styles.ProjectInfoText}>{project.duration}</p>
+                        </div>
+                    }
+                    {project?.location &&
+                        <div className={styles.ProjectInfoItem}>
+                            <h1 className={styles.ProjectInfoTitle}>Location</h1>
+                            <p className={styles.ProjectInfoText}>{project.location}</p>
+                        </div>
+                    }
                 </div>
             </div>
-            <div className="ServDynLoremCont">
-                <div className="ServDynLoremTitle">
-                    <h1 className="text-4xl  font-bold capitalize mb-20">Project Outline</h1>
+            <div className={styles.ServDynTextCont}>
+                <div className={styles.PortableTextCont}>
+                    {project?.bodyText && <PortableText value={project.bodyText} components={RichTextComponents}/>}
                 </div>
-                <p className="ServeDynTextLorem">Nullam vel bibendum turpis. Sed cursus nisi metus, vel rutrum odio eleifend sit amet. Nullam viverra mattis interdum. Nunc dapibus sem diam, sed ullamcorper elit aliquam in. Etiam eu mi semper, dictum dolor sit amet, tempus dolor. <br/><br/>Integer eget tellus et sapien facilisis cursus ut ac sem. Vestibulum nec cursus arcu, non sollicitudin purus. Aenean ut urna sit amet elit semper blandit. Maecenas elementum sit amet quam quis fermentum. Etiam iaculis felis id tellus condimentum venenatis. Etiam nec tortor in nisi luctus luctus. Phasellus nisi nisi, accumsan quis molestie et, pharetra sit amet justo.<br/><br/> Pellentesque mauris felis, ultricies nec odio et, cursus congue erat. Aliquam et commodo est, sit amet cursus odio.</p>
+            </div>
+            {project?.testimonial && project?.testimonialAuthor && (
+                <div className={styles.ServDynTestimonialCont}>
+                    <p className={styles.ServDynTestimonialText}>"{project.testimonial}"</p>
+                    <p className={styles.ServDynTestimonialAuthor}>-{project.testimonialAuthor}</p>
+                </div>
+            )}
+            <div className={styles.ProjectImageContainer}>
+                <div className={styles.GalleryRows}>
+                    <div className={styles.GalleryColumns}>
+                        {project?.imageGallery && project.imageGallery.map((image, index) => (
+                            <div className={styles.GalleryImg} key={index}>
+                                <Image  src={image.asset.url} alt={project.title} fill objectFit="cover" />
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
             <div className="ActionContainer">
                 <h1 className="ServeActionTitle">Learn More About Our Projects</h1>

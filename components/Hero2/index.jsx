@@ -1,5 +1,7 @@
+"use client";
+
 import { motion, useScroll, useTransform } from "motion/react";
-import React, { useRef } from "react";
+import React, {useEffect, useRef, useState} from "react";
 
 import styles from "./styles.module.css";
 import Image from "next/image";
@@ -9,10 +11,16 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import heroHome from "@/public/HomeHeroNew.jpg";
 
+import {client} from "@/sanity/lib/client";
 
+const IMAGE_QUERY = `*[_type == "homePage"] {_id, heroImage { asset -> { _id, url} } }`;
+const BLUR_QUERY = `*[_type == "homePage"] {_id, heroImage { asset -> { metadata {lqip} } } }`;
+const options = { next: { revalidate: 30 } };
 
 
 export default function Index() {
+
+
   const theme = createTheme({
     border: '1px solid',
     palette: {
@@ -28,12 +36,45 @@ export default function Index() {
   });
 
 
+
   const backgroundY = useTransform(scrollYProgress, [0,0.5, 1], ["0%","50%", "100%"]);
   const backgroundYScroll = useTransform(scrollYProgress, [0,1], ["0%", "-100%"]);
   const smBackgroundYScroll = useTransform(scrollYProgress, [0,1], ["0%", "20%"]);
 
   const overlayOpacity = useTransform(scrollYProgress, [0,0.5, 1], [0,0, 1]);
   const overlayOpacityText = useTransform(scrollYProgress, [0,0.6, 1], [1,0,0]);
+
+
+  const [data, setData] = useState([]);
+  const [blurImage, setBlurImage] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [blurIsLoaded, setBlurIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setBlurIsLoaded(false);
+    const fetchData = async () => {
+      const result = await client.fetch(BLUR_QUERY, {}, options);
+      setBlurImage(result);
+    };
+    fetchData();
+    setBlurIsLoaded(true);
+  }, []);
+
+
+  useEffect(() => {
+    setIsLoaded(false);
+    const fetchData = async () => {
+      const result = await client.fetch(IMAGE_QUERY, {}, options);
+      setData(result);
+    };
+    fetchData();
+    setIsLoaded(true);
+  }, []);
+
+
+
+
+
 
   return (
     <motion.div
@@ -50,8 +91,25 @@ export default function Index() {
           className="absolute inset-0 z-10 mt-[100px]"
 
         >
-          <div className="absolute z-10 top-0 left-0 w-full h-full bg-black opacity-20"></div>
-          <Image src={heroHome} alt="House with lawn" objectFit="cover" fill />
+          {/*<div className="absolute z-10 top-0 left-0 w-full h-full bg-black opacity-30"></div>*/}
+          {/*{blurImage[0]?.heroImage?.asset?.metadata?.blurHash &&*/}
+          {/*  <Blurhash hash={blurImage[0]?.heroImage?.asset?.metadata?.blurHash} width={100} height={100}  />*/}
+          {/*}*/}
+
+          {blurImage[0]?.heroImage?.asset?.metadata?.lqip &&
+              <Image
+                  src={data[0]?.heroImage?.asset?.url ? data[0]?.heroImage?.asset?.url : blurImage[0]?.heroImage?.asset?.metadata?.lqip}
+                  alt="Hero Image"
+                  objectFit="cover"
+                  placeholder="blur"
+                  blurDataURL={blurImage[0]?.heroImage?.asset?.metadata?.lqip}
+                  fill
+              />
+          }
+
+
+
+
         </motion.div>
         <motion.div
           className={styles.overlay}

@@ -1,16 +1,32 @@
-import React from 'react';
+"use client";
+
+import React, {useEffect, useState} from 'react';
+
+import {client} from "@/sanity/lib/client";
+
+const ABOUT_QUERY = `*[_type == "aboutPage"] {_id, headerDescription }`;
+const options = { next: { revalidate: 30 } };
 
 const Index = () => {
+    const [data, setData] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        setIsLoaded(false);
+        const fetchData = async () => {
+            const result = await client.fetch(ABOUT_QUERY, {}, options);
+            setData(result);
+        };
+        fetchData();
+        setIsLoaded(true);
+    }, []);
+        //console.log(data);
+
     return (
         <div className="AboutHead">
-            <h1 className="text-4xl font-bold mb-5 mt-20 px-10">About National Construction</h1>
+            <h1 className="text-4xl font-bold mb-10 mt-20 px-10">About Rocky Mountain Remodels</h1>
             <div className="AboutPContainer">
-                <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Duis malesuada ipsum eu enim suscipit, vitae facilisis dolor fermentum.
-                    Nulla aliquet mi vel nisi semper tempus.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Duis malesuada ipsum eu enim suscipit, vitae facilisis dolor fermentum.
-                    Nulla aliquet mi vel nisi semper tempus.
-                </p>
+                { isLoaded && <p className="">{data[0]?.headerDescription}</p>}
             </div>
         </div>
     );

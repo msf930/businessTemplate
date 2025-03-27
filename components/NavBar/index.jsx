@@ -12,7 +12,41 @@ import React, {useState} from "react";
 import { usePathname  } from "next/navigation";
 
 export default function Nav() {
-    //handle scroll animation
+
+    const [navIcon, setNavIcon] = useState(`${styles.navIconClosed}`);
+    const [showNavbar, setShowNavbar] = useState(false);
+    const [navBarActive, setNavBarActive] = useState(`${styles.navelements}`);
+    const [navBackground, setNavBackground] = useState(`${styles.navContMobile}`);
+    const [isAtTop, setIsAtTop] = useState(true);
+
+    const handleShowNavbar = () => {
+        setShowNavbar((showNavbar) => {
+            const newShowNavbar = !showNavbar;
+
+            if (newShowNavbar && !isAtTop) {
+                setNavBarActive(`${styles.navelementsactive}`);
+                setNavIcon(`${styles.navIconOpen}`)
+                setNavBackground(`${styles.navContMobileScroll}`);
+            } else if (newShowNavbar && isAtTop) {
+                setNavBarActive(`${styles.navelementsactive}`);
+                setNavIcon(`${styles.navIconOpen}`);
+                setNavBackground(`${styles.navContMobileScroll}`);
+            }
+            else if (!newShowNavbar && !isAtTop) {
+                setNavBarActive(`${styles.navelements}`);
+                setNavIcon(`${styles.navIconClosed}`);
+                setNavBackground(`${styles.navContMobileScroll}`);
+            }
+            else if (!newShowNavbar && isAtTop) {
+                setNavBarActive(`${styles.navelements}`);
+                setNavIcon(`${styles.navIconClosed}`);
+                setNavBackground(`${styles.navContMobile}`);
+            }
+
+            return newShowNavbar;
+        });
+    };
+
     const { scrollY } = useScroll()
 
     const [hidden, setHidden] = useState(false);
@@ -30,24 +64,30 @@ export default function Nav() {
             setNavIcon(`${styles.navIconClosed}`);
         }
 
+        if(current < 150) {
+            setNavBackground(`${styles.navContMobile}`)
+            setIsAtTop(true)
+        } else {
+            setNavBackground(`${styles.navContMobileScroll}`);
+            setIsAtTop(false)
+        }
+
+        if(current > previous && showNavbar){
+            setShowNavbar(true);
+            handleShowNavbar();
+
+
+        } else if(current < previous && showNavbar){
+            setShowNavbar(true);
+            handleShowNavbar();
+
+        }
+
 
     })
 
-    //handle opening and closing of mobile nav
-    const [navIcon, setNavIcon] = useState(`${styles.navIconClosed}`);
-    const [showNavbar, setShowNavbar] = useState(false);
-
-    const handleShowNavbar = () => {
-        setShowNavbar(!showNavbar);
-        if (showNavbar) {
-            return setNavIcon(`${styles.navIconClosed}`);
-        } else {
-            return setNavIcon(`${styles.navIconOpen}`);
-        }
-    };
 
     const pathname = usePathname();
-
 
     return (
         <motion.header
@@ -83,10 +123,10 @@ export default function Nav() {
 
                 </div>
             </nav>
-            <nav className={styles.navContMobile}>
+            <nav className={navBackground}>
                 <div className={styles.navLogoMobile}>
                     <Link href="/">
-                        <Image src="/Logo.png" alt="logo" height={50} width={50}/>
+                        <Image src="/RMTNLogo.png" alt="logo" height={50} width={50}/>
                     </Link>
                 </div>
                 <div>
@@ -96,12 +136,7 @@ export default function Nav() {
                         <span></span>
                     </button>
                 </div>
-                <div
-                    className={
-                        showNavbar ? styles.navelementsactive : styles.navelements
-                    }
-
-                >
+                <div className={navBarActive}>
                     <nav>
                         <ul>
                             <li>

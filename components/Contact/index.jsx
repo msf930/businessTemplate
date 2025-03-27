@@ -55,7 +55,7 @@ const Index = () => {
                     <div className="contactInputContainer1">
                         <div className="contactInputItem2">
                             <label htmlFor="fname">Type your message here...</label>
-                            <textarea className="contactTextArea"  id="textArea" name="textArea" > </textarea>
+                            <textarea className="contactTextArea"  id="textArea" name="textArea" ></textarea>
                         </div>
                     </div>
                     <div className="contactInputContainer1">
