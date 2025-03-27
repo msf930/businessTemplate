@@ -88,7 +88,7 @@ export default function Index() {
         }}
       >
         <motion.div
-          className="absolute inset-0 z-10 mt-[100px]"
+          className="absolute inset-0 z-10 mt-[100px] brightness-[0.7]"
 
         >
           {/*<div className="absolute z-10 top-0 left-0 w-full h-full bg-black opacity-30"></div>*/}
