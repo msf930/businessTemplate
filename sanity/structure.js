@@ -7,14 +7,14 @@ export const structure = (S) =>
   S.list()
     .title('Content')
     .items([
-        S.listItem()
-            .title('Instructions')
-            .icon(ErrorFilledIcon)
-            .child(
-                S.document()
-                    .title('Editor Instructions')
-                    .schemaType('instructions')
-                    .documentId('instructions')),
+        // S.listItem()
+        //     .title('Instructions')
+        //     .icon(ErrorFilledIcon)
+        //     .child(
+        //         S.document()
+        //             .title('Editor Instructions')
+        //             .schemaType('instructions')
+        //             .documentId('instructions')),
         S.listItem()
             .title('Home Page Settings')
             .icon(HomeIcon)

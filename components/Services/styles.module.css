@@ -93,20 +93,11 @@
     }
 
     .serviceButton {
-        margin-top: 50px;
-        margin-left: 0;
         color: white;
         background-color: black;
         border-radius: 0;
-        transition: border-radius .4s;
     }
 
-    .serviceButton:hover {
-        margin-top: 50px;
-        margin-left: 0;
-        color: white;
-        background-color: black;
-    }
 }
 
 @media only screen and (max-width: 640px) {

@@ -178,16 +178,9 @@
 
     .wowButton {
         width: 150px;
-
-
         color: white;
         background-color: black;
         border-radius: 0;
-        transition: border-radius .5s;
     }
 
-    .wowButton:hover {
-        color: white;
-        background-color: black;
-    }
 }
