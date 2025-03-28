@@ -777,12 +777,30 @@ body {
 }
 
 /*--------------About---------------*/
+.aboutHeroContainer{
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 70vh;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+}
+.aboutHeroParallax {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: calc(100vh + 70vh);
+    z-index: 1;
 
+}
 .heroContainer2-about{
     position: relative;
-    width: 100vw;
-    height: 500px;
-    z-index: -1;
+    margin-top: 70vh;
+    width: 100%;
+    height: 100vh;
 }
 .heroContainer2Sm-about{
     display: none;
