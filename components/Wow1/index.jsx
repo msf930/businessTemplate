@@ -40,7 +40,7 @@ const Index = () => {
                 <div className={styles.textCont}>
                     <h1 className={styles.wowTextTitle}>{data[0]?.section2?.section2Title}</h1>
                     <p className={styles.wowBodyText}>{data[0]?.section2?.section2Description}</p>
-                    <Button className={styles.wowButton} href="/about">About</Button>
+                    <Button variant="contained" className={styles.wowButton} href="/about">About</Button>
                  </div>
 
             </div>
@@ -49,7 +49,7 @@ const Index = () => {
                 <p className={styles.wowTextPSm}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Duis malesuada ipsum eu enim suscipit, vitae facilisis dolor
                     fermentum. Nulla aliquet mi vel nisi semper tempus. </p>
-                <Button className={styles.wowButtonSm} href="/about">About</Button>
+                <Button variant="contained" className={styles.wowButtonSm} href="/about">About</Button>
                 <div className={styles.heroContainerSm} >
                     <WowParallax />
                 </div>

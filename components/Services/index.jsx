@@ -74,7 +74,7 @@ const Index = () => {
                 </div>
             }
             <div className="mt-24 mb-24 text-center">
-                <Button href="/services" className={styles.serviceButton}>See All Services</Button>
+                <Button variant="contained" href="/services" className={styles.serviceButton}>See All Services</Button>
             </div>
         </div>
     );
