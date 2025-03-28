@@ -10,6 +10,7 @@ import Link from "next/link";
 
 
 import { client } from "@/sanity/lib/client";
+import RippleButton from "@/components/RippleButton";
 
 const SERVICE_QUERY = `*[_type == "services"] {_id, slug, title, description, mainImage { asset -> { _id, url } } }`;
 const SERVICE_ORDER_QUERY = `*[_type == "servicesOrder"]{ services }`;
@@ -42,6 +43,7 @@ const Index = async () => {
                     <div key={index} className="ServGridItem">
                         <Link href={`services/${post.slug.current}`}>
                             <div className="ServImgItemCont">
+                                <RippleButton />
                                 <h1 className="ServImgText">Learn More</h1>
                                 <Image
                                     src={post.mainImage.asset.url}

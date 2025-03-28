@@ -6,6 +6,7 @@ import {useRef} from "react";
 import Image from "next/image";
 
 import styles from "./styles.module.css";
+import RippleButton from "@/components/RippleButton";
 
 const SoloServeHero = ({ title, image, altText }) => {
 
@@ -21,6 +22,7 @@ const SoloServeHero = ({ title, image, altText }) => {
             <h1 className={styles.ServeDynHeroText}>{title}</h1>
           <motion.div className={styles.ServDynImg}>
               <motion.div className={styles.ServDynImgParallax} style={{y: backgroundY}}>
+                <RippleButton/>
                   <Image alt={altText} src={image}  objectFit="cover" fill />
               </motion.div>
           </motion.div>

@@ -6,6 +6,7 @@ import ProjGridItem from "@/components/ProjGridItem";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link";
 import Image from "next/image";
+import RippleButton from "@/components/RippleButton";
 
 const PROJECT_QUERY = `*[_type == "projects"] {_id, slug, title, description, mainImage { asset -> { _id, url } } }`;
 const PROJECT_ORDER_QUERY = `*[_type == "projectsOrder"]{ projects }`;
@@ -36,6 +37,7 @@ const Index = async () => {
                             <div key={index} className="ServGridItem">
                                 <Link href={`projects/${post.slug.current}`}>
                                     <div className="ServImgItemCont">
+                                        <RippleButton />
                                         <h1 className="ServImgText">Learn More</h1>
                                         <Image
                                             src={post.mainImage.asset.url}

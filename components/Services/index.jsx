@@ -10,7 +10,11 @@ import Link from "next/link";
 
 import {client} from "@/sanity/lib/client";
 
+import {createTheme, ThemeProvider} from "@mui/material/styles";
+
 import styles from "./styles.module.css";
+import RippleButton from "@/components/RippleButton";
+
 
 
 const SERVICE_QUERY = `*[_type == "homePage"] {_id, services[] { serviceTitle, serviceRef {_ref}, serviceImage { asset -> { _id, url } } } }`;
@@ -44,7 +48,13 @@ const Index = () => {
     }, []);
     //console.log(data);
 
-
+    const theme = createTheme({
+        palette: {
+            primary: {
+                main: "#000000",
+            }
+        },
+    });
     return (
         <div className={styles.serviceMainContainer}>
             <div className={styles.serviceTitle}>
@@ -74,7 +84,9 @@ const Index = () => {
                 </div>
             }
             <div className="mt-24 mb-24 text-center">
-                <Button variant="contained" href="/services" className={styles.serviceButton}>See All Services</Button>
+                <ThemeProvider theme={theme}>
+                    <Button variant="contained" color="primary" href="/services" className={styles.serviceButton}>See All Services</Button>
+                </ThemeProvider>
             </div>
         </div>
     );
