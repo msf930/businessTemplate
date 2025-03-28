@@ -126,7 +126,7 @@ export default function Index() {
         >
 
           <motion.h1
-              initial={{x: -100, opacity: 0}}
+              initial={{x: -40, opacity: 0}}
               animate={{x: 0, opacity: 1}}
               transition={{ease: "easeInOut", duration: 0.8}}
           >
@@ -136,7 +136,7 @@ export default function Index() {
           </motion.h1>
           <motion.div
               className={styles.buttonCont}
-              initial={{x: 100, opacity: 0}}
+              initial={{x: 40, opacity: 0}}
               animate={{x: 0, opacity: 1}}
               transition={{ease: "easeInOut", duration: 0.8}}
           >

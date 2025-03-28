@@ -15,10 +15,12 @@
 
     .whyItemContainer {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: space-evenly;
         text-align: center;
         margin-top: 2rem;
+        gap: 30px;
     }
 }
 @media only screen and (max-width: 640px) {
@@ -48,7 +50,7 @@
     }
 }
 .whyItem{
-    width: 15rem;
+    width: 300px;
 }
 .whyItemTitle{
     font-size: xx-large;

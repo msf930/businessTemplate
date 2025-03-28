@@ -64,7 +64,7 @@ const Index = () => {
                 <div className={styles.serviceContainer}>
                     {data.map((item, index) => (
                         <Link key={index} href={item?.slug ? `services/${item?.slug?.current}` : "/services"} className={styles.serviceItemContainer}>
-
+                                <RippleButton/>
                                 <h1 className={styles.serviceItemText}>{item?.serviceTitle}</h1>
                                 {/*<div className={styles.serviceItemTextLearn}>Learn More</div>*/}
                                 <Image className={styles.serviceItemImg} src={item?.serviceImage?.asset?.url} alt={item?.serviceTitle} fill objectFit="cover"/>

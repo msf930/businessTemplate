@@ -31,7 +31,7 @@ export default function MultiLayerParallax() {
         target: ref,
         offset: ["start end", "end start"],
     });
-    const backgroundY = useTransform(scrollYProgress, [0, 1], ["-100%", "0%"]);
+    const backgroundY = useTransform(scrollYProgress, [0, 1], ["-60%", "-40%"]);
     const backgroundYSm = useTransform(scrollYProgress, [0, 1], ["-50%", "-60%"]);
 
 
