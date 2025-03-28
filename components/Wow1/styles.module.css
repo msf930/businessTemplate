@@ -74,12 +74,9 @@
         color: white;
         background-color: black;
         border-radius: 0;
-        transition: border-radius .5s;
+
     }
-    .wowButtonSm:hover{
-        color: white;
-        background-color: black;
-    }
+
     .wowImgSm{
       width: 100vw;
         display: block;
@@ -178,8 +175,8 @@
 
     .wowButton {
         width: 150px;
-        color: white;
-        background-color: black;
+        /*color: white;*/
+        /*background-color: black;*/
         border-radius: 0;
     }
 
