@@ -13,6 +13,7 @@ import Image from "next/image";
 
 import styles from "./styles.module.css";
 import ProjAction from "@/components/ProjAction";
+import Footer from "@/components/Footer";
 
 const PROJECT_QUERY = `*[_type == "projects" && slug.current == $projId][0] {_id, title, description, mainImage {alt, asset -> { _id, url } }, bodyText, slug, budget, duration, location, imageGallery[] { asset -> { _id, url } }, tag, testimonial, testimonialAuthor }`;
 const options = { next: { revalidate: 30 } };
@@ -87,6 +88,7 @@ const Page = async ({ params }) => {
                 </div>
             </div>
             <ProjAction/>
+            <Footer/>
 
         </div>
     );

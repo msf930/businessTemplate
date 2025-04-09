@@ -9,6 +9,7 @@ import AboutGrid from "@/components/AboutGrid";
 import AboutHead3 from "@/components/AboutHead3";
 import AboutAction from "@/components/AboutAction";
 import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 
 const Page = () => {
 
@@ -28,6 +29,7 @@ const Page = () => {
                 <AboutGrid />
                 <AboutHead3 />
                 <AboutAction/>
+                <Footer/>
             </motion.div>
         </AnimatePresence>
     );

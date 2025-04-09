@@ -3,6 +3,7 @@ import ServHead from "@/components/ServHead";
 import ServGrid from "@/components/ServGrid";
 import ServAction from "@/components/ServAction";
 import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 
 const Page = () => {
     return (
@@ -11,6 +12,7 @@ const Page = () => {
             <ServHead/>
             <ServGrid/>
             <ServAction/>
+            <Footer/>
         </div>
     );
 };
