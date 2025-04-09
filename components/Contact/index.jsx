@@ -105,7 +105,7 @@ const Index = () => {
                     <div className="contactInputContainer1">
                         <div className="contactInputItem2">
                             <ThemeProvider theme={theme}>
-                                <Button className="inputBtn">Submit</Button>
+                                <Button variant="contained" color="primary" className="inputBtn">Submit</Button>
                             </ThemeProvider>
                         </div>
                     </div>
