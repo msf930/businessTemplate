@@ -6,6 +6,7 @@ import { client } from "@/sanity/lib/client";
 import { PortableText } from "next-sanity";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import ServAction from "@/components/ServAction";
 
 const SERVICE_QUERY = `*[_type == "services" && slug.current == $serviceId][0] {_id, title, mainImage {alt, asset -> { _id, url } }, body, slug }`;
 const options = { next: { revalidate: 30 } };
@@ -42,10 +43,7 @@ const Page = async ({params}) => {
                    <PortableText value={service.body} components={RichTextComponents}/>
                 </div>
             </div>
-            <div className="ActionContainer">
-                <h1 className="ServeActionTitle">Learn More About Rocky Mountain Remodels</h1>
-                <Button className="ActionBtn" href="/contact">Contact Us</Button>
-            </div>
+            <ServAction/>
             <Footer/>
         </div>
     );

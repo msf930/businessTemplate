@@ -2,7 +2,6 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 
 import React from "react";
-import Footer from "@/components/Footer";
 
 import { ReactLenis } from "@/app/utils/lenis";
 
@@ -20,7 +19,7 @@ export default function RootLayout({ children }) {
         <body className={inter.className}>
 
           {children}
-          {/*<Footer />*/}
+          {/*<Index />*/}
         </body>
       </ReactLenis>
     </html>

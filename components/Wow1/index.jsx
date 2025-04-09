@@ -49,8 +49,12 @@ const Index = () => {
             </div>
             <div className={styles.wowTextContainer}>
                 <div className={styles.textCont}>
-                    <h1 className={styles.wowTextTitle}>{data[0]?.section2?.section2Title}</h1>
-                    <p className={styles.wowBodyText}>{data[0]?.section2?.section2Description}</p>
+                    {data[0]?.section2?.section2Title &&
+                        <h1 className={styles.wowTextTitle}>{data[0]?.section2?.section2Title}</h1>
+                    }
+                    {data[0]?.section2?.section2Description &&
+                        <p className={styles.wowBodyText}>{data[0]?.section2?.section2Description}</p>
+                    }
                     <ThemeProvider theme={theme}>
                         <Button variant="contained" color="primary" className={styles.wowButton} href="/about">About</Button>
                     </ThemeProvider>
@@ -58,10 +62,12 @@ const Index = () => {
 
             </div>
             <div className={styles.wowTextContainerSm}>
-                <h1 className={styles.wowTextTitleSm}>Leading The Industry</h1>
-                <p className={styles.wowTextPSm}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Duis malesuada ipsum eu enim suscipit, vitae facilisis dolor
-                    fermentum. Nulla aliquet mi vel nisi semper tempus. </p>
+                {data[0]?.section2?.section2Title &&
+                    <h1 className={styles.wowTextTitleSm}>{data[0]?.section2?.section2Title}</h1>
+                }
+                {data[0]?.section2?.section2Description &&
+                    <p className={styles.wowTextPSm}>{data[0]?.section2?.section2Description}</p>
+                }
                 <ThemeProvider theme={theme}>
                     <Button variant="contained" color="primary" className={styles.wowButtonSm} href="/about">About</Button>
                 </ThemeProvider>

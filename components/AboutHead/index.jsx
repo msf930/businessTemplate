@@ -24,7 +24,7 @@ const Index = () => {
 
     return (
         <div className="AboutHead">
-            <h1 className="text-4xl font-bold mb-10 mt-20 px-10">About Rocky Mountain Remodels</h1>
+            <h1 className="text-4xl font-bold mb-10 mt-10 px-10">About Rocky Mountain Remodels</h1>
             <div className="AboutPContainer">
                 { isLoaded && <p className="">{data[0]?.headerDescription}</p>}
             </div>

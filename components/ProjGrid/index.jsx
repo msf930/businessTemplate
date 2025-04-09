@@ -35,7 +35,7 @@ const Index = async () => {
                     <div className="ServGridCol">
                         {orderedPosts.map((post, index) => (
                             <div key={index} className="ServGridItem">
-                                <Link href={`projects/${post.slug.current}`}>
+                                <Link className="ServGridLinkContainer" href={`projects/${post.slug.current}`}>
                                     <div className="ServImgItemCont">
                                         <RippleButton />
                                         <h1 className="ServImgText">Learn More</h1>

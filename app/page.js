@@ -27,7 +27,7 @@ export default function Home() {
               <Why />
               <Services />
               <Testimonials />
-              {/*<Contact />*/}
+              <Contact />
               <Footer />
         </motion.div>
       </AnimatePresence>

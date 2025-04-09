@@ -109,3 +109,118 @@
     z-index: 1;
     filter: brightness(100%);
 }
+
+@media only screen and (max-width: 600px) {
+    .ProjectInfoContainer{
+        display: flex;
+        flex-direction: column;
+        padding: 0 5%;
+    }
+    .ProjectTitleContainer{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 20px 0;
+    }
+    .ProjectTitle{
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    .ProjectDetailsContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+    .ProjectInfoItem{
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        width: 200px;
+    }
+    .ProjectInfoTitle{
+        font-weight: bold;
+    }
+    .ProjectInfoText{
+        font-weight: normal;
+    }
+    .ProjectTag{
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        background-color: #DEA565;
+        color: white;
+        padding: 0.5rem 1rem;
+    }
+    .ServDynTextCont{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+    }
+    .PortableTextCont{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: left;
+        width: 100%;
+        padding-left: 5%;
+        padding-right: 5%;
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+    }
+    .ServDynTestimonialCont{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 5vh 0;
+        width: 100%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .ServDynTestimonialText{
+        font-size: 1rem;
+        font-weight: normal;
+        margin-bottom: 1rem;
+        font-style: italic;
+        text-align: center;
+    }
+    .ServDynTestimonialAuthor{
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    .ProjectImageContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 5vh 0;
+        padding: 0 1rem;
+    }
+    .GalleryRows{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+    .GalleryColumns{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+    .GalleryImg{
+        width: 100vw;
+        height: calc(100vw * .66);
+        z-index: 1;
+        filter: brightness(100%);
+    }
+
+}

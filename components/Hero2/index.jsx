@@ -13,8 +13,11 @@ import heroHome from "@/public/HomeHeroNew.jpg";
 
 import {client} from "@/sanity/lib/client";
 
+import parsePhoneNumber from 'libphonenumber-js'
+
 const IMAGE_QUERY = `*[_type == "homePage"] {_id, heroImage { asset -> { _id, url} } }`;
 const BLUR_QUERY = `*[_type == "homePage"] {_id, heroImage { asset -> { metadata {lqip} } } }`;
+const PHONE_QUERY = `*[_type == "generalSettings"] {_id, phoneNumber }`;
 const options = { next: { revalidate: 30 } };
 
 
@@ -46,9 +49,11 @@ export default function Index() {
 
 
   const [data, setData] = useState([]);
-  const [blurImage, setBlurImage] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [blurImage, setBlurImage] = useState([]);
   const [blurIsLoaded, setBlurIsLoaded] = useState(false);
+  const [phoneData, setPhoneData] = useState([]);
+  const [phoneIsLoaded, setPhoneIsLoaded] = useState(false);
 
   useEffect(() => {
     setBlurIsLoaded(false);
@@ -71,10 +76,20 @@ export default function Index() {
     setIsLoaded(true);
   }, []);
 
+  useEffect(() => {
+    setPhoneIsLoaded(false);
+    const fetchData = async () => {
+      const result = await client.fetch(PHONE_QUERY, {}, options);
+      setPhoneData(result);
+    };
+    fetchData();
+    setPhoneIsLoaded(true);
+  }, []);
 
-
-
-
+  let phoneNumber = "";
+  if(phoneData[0]?.phoneNumber){
+    phoneNumber = parsePhoneNumber(`${phoneData[0]?.phoneNumber}`, "US");
+  }
 
   return (
     <motion.div
@@ -140,22 +155,31 @@ export default function Index() {
               animate={{x: 0, opacity: 1}}
               transition={{ease: "easeInOut", duration: 0.8}}
           >
-            <ThemeProvider theme={theme}>
-            <Button variant="outlined" className={styles.wowButton2} href={`tel:13031112222`}>303-111-2222</Button>
-            <Button variant="outlined" className={styles.wowButton2} href="/about">About</Button>
-            </ThemeProvider>
+              <ThemeProvider theme={theme}>
+                <Button variant="outlined" className={styles.wowButton2} href="/contact">Get In Touch</Button>
+                {/*<Button variant="outlined" className={styles.wowButton2} href="/about">About</Button>*/}
+              </ThemeProvider>
             </motion.div>
         </motion.div>
       </motion.div>
       <motion.div className={styles.parallaxSm}>
         <motion.div
             // className="absolute inset-0 z-10"
-            className={styles.parallaxSm}
+            className="absolute inset-0 z-10 brightness-[0.7]"
             style={{
               y: smBackgroundYScroll,
             }}
         >
-          <Image src={heroHome} alt="House with lawn" objectFit="cover" fill />
+          {blurImage[0]?.heroImage?.asset?.metadata?.lqip &&
+              <Image
+                  src={data[0]?.heroImage?.asset?.url ? data[0]?.heroImage?.asset?.url : blurImage[0]?.heroImage?.asset?.metadata?.lqip}
+                  alt="Hero Image"
+                  objectFit="cover"
+                  placeholder="blur"
+                  blurDataURL={blurImage[0]?.heroImage?.asset?.metadata?.lqip}
+                  fill
+              />
+          }
         </motion.div>
         <div className={styles.overlayText}>
           <h1>
@@ -164,14 +188,17 @@ export default function Index() {
             Remodels
           </h1>
           <div className={styles.buttonCont}>
-            <ThemeProvider theme={theme}>
-              <Button
-                  variant="outlined"
-                  color="primary"
-                  className={styles.wowButton2}
-                  href="/about">303-111-2222
-              </Button>
-            </ThemeProvider>
+
+              <ThemeProvider theme={theme}>
+                <Button
+                    variant="outlined"
+                    color="primary"
+                    className={styles.wowButton2}
+                    href="/contact">
+                  Get In Touch
+                </Button>
+              </ThemeProvider>
+
           </div>
         </div>
       </motion.div>

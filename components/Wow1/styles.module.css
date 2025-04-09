@@ -59,6 +59,7 @@
     .wowTextTitleSm{
         font-size: 2rem;
         text-transform: uppercase;
+        padding: 0 5%;
     }
     .wowTextPSm{
         font-size: 1.25rem; /* 20px */

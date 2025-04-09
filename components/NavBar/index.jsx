@@ -7,9 +7,13 @@ import Image from "next/image";
 
 import {motion, useMotionValueEvent, useScroll} from "motion/react";
 
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import { usePathname  } from "next/navigation";
+import {client} from "@/sanity/lib/client";
+
+const CONTACT_QUERY = `*[_type == "generalSettings"] {_id, logo { asset -> { _id, url} }}`;
+const options = { next: { revalidate: 30 } };
 
 export default function Nav() {
 
@@ -89,6 +93,20 @@ export default function Nav() {
 
     const pathname = usePathname();
 
+    const [contactData, setContactData] = useState([]);
+    const [contactIsLoaded, setContactIsLoaded] = useState(false);
+
+    useEffect(() => {
+        setContactIsLoaded(false);
+        const fetchData = async () => {
+            const result = await client.fetch(CONTACT_QUERY, {}, options);
+            setContactData(result);
+        };
+        fetchData();
+        setContactIsLoaded(true);
+    }, []);
+
+
     return (
         <motion.header
             animate={hidden ? "hide" : "show"}
@@ -102,9 +120,9 @@ export default function Nav() {
             <nav className={styles.navCont}>
                 <div className={styles.navImgCont}>
                     <Link href="/">
-
-                        <Image src="/RMTNLogo.png" alt="logo" height={70} width={70}/>
-
+                        {contactData[0]?.logo?.asset?.url &&
+                            <Image src={contactData[0]?.logo?.asset?.url} alt="logo" height={70} width={70}/>
+                        }
                     </Link>
                 </div>
                 <div className={styles.navLinkCont}>
@@ -119,6 +137,9 @@ export default function Nav() {
                     </div>
                     <div>
                         <Link href="/projects">Projects</Link>
+                    </div>
+                    <div>
+                        <Link href="/contact">Contact</Link>
                     </div>
 
                 </div>
@@ -173,6 +194,15 @@ export default function Nav() {
                                     onClick={handleShowNavbar}
                                 >
                                     Projects
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/contact"
+                                    className={pathname === "/contact" ? styles.navMenuLinkActive : styles.navMenuLink}
+                                    onClick={handleShowNavbar}
+                                >
+                                    Contact
                                 </Link>
                             </li>
                         </ul>

@@ -12,6 +12,7 @@ import commaNumber from "comma-number";
 import Image from "next/image";
 
 import styles from "./styles.module.css";
+import ProjAction from "@/components/ProjAction";
 
 const PROJECT_QUERY = `*[_type == "projects" && slug.current == $projId][0] {_id, title, description, mainImage {alt, asset -> { _id, url } }, bodyText, slug, budget, duration, location, imageGallery[] { asset -> { _id, url } }, tag, testimonial, testimonialAuthor }`;
 const options = { next: { revalidate: 30 } };
@@ -85,10 +86,7 @@ const Page = async ({ params }) => {
                     </div>
                 </div>
             </div>
-            <div className="ActionContainer">
-                <h1 className="ServeActionTitle">Learn More About Our Projects</h1>
-                <Button className="ActionBtn">Contact Us</Button>
-            </div>
+            <ProjAction/>
 
         </div>
     );

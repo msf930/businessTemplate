@@ -1,13 +1,6 @@
 import React from 'react';
 import Image from "next/image";
-import Serv1 from "@/public/Preconstruction.jpg";
-import Serv2 from "@/public/Construction Management.jpg";
-import Serv3 from "@/public/Project Management.jpg";
-import Serv4 from "@/public/Lean Construction.jpg";
-import Serv5 from "@/public/Supply Chain Management.jpg";
-import Serv6 from "@/public/Virtual Design And Construction.jpg";
 import Link from "next/link";
-
 
 import { client } from "@/sanity/lib/client";
 import RippleButton from "@/components/RippleButton";
@@ -41,7 +34,7 @@ const Index = async () => {
                 <div className="ServGridCol">
                 {orderedPosts.map((post, index) => (
                     <div key={index} className="ServGridItem">
-                        <Link href={`services/${post.slug.current}`}>
+                        <Link className="ServGridLinkContainer" href={`services/${post.slug.current}`}>
                             <div className="ServImgItemCont">
                                 <RippleButton />
                                 <h1 className="ServImgText">Learn More</h1>

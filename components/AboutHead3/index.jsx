@@ -23,10 +23,14 @@ const Index = () => {
         <>
             { data &&
                 <div className="AboutHead3">
-                    <h1 className="text-4xl font-bold mb-5 ">{data[0]?.bottomText}</h1>
+                    {data[0]?.bottomText &&
+                        <h1 className="text-4xl font-bold mb-5 px-4">{data[0]?.bottomText}</h1>
+                    }
                     <div className="About3PContainer">
                         <div></div>
-                       <p>{data[0]?.bottomTextBody}</p>
+                        {data[0]?.bottomTextBody &&
+                            <p>{data[0]?.bottomTextBody}</p>
+                        }
                         <div></div>
                     </div>
                 </div>

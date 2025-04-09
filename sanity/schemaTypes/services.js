@@ -13,6 +13,7 @@ export const services = defineType({
             name: 'title',
             type: 'string',
             description: 'Titles should be catchy, descriptive, and not too long',
+            validation: rule => rule.required().min(1),
         }),
         defineField({
             name: 'description',
@@ -27,7 +28,6 @@ export const services = defineType({
                 isUnique: isUniqueSlug
             },
             description: 'This is the URL path for the page. Please click "Generate" to create a slug',
-            validation: rule => rule.required().min(1).warning('Please generate a slug'),
         }),
         defineField({
             name: 'mainImage',

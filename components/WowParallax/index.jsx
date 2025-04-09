@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, useScroll, useTransform } from "motion/react";
 import React, {useEffect, useRef, useState} from "react";
 
@@ -11,6 +13,7 @@ const SECTION_QUERY = `*[_type == "homePage"] {_id, section2 { section2Image { a
 const options = { next: { revalidate: 30 } };
 
 export default function MultiLayerParallax() {
+
 
 
     const [data, setData] = useState([]);
@@ -32,7 +35,7 @@ export default function MultiLayerParallax() {
         offset: ["start end", "end start"],
     });
     const backgroundY = useTransform(scrollYProgress, [0, 1], ["-60%", "-40%"]);
-    const backgroundYSm = useTransform(scrollYProgress, [0, 1], ["-50%", "-60%"]);
+    const backgroundYSm = useTransform(scrollYProgress, [0, 1], ["-60%", "-30%"]);
 
 
     return (
@@ -58,7 +61,11 @@ export default function MultiLayerParallax() {
                 }}
             >
                 <div className={styles.parallaxImg}>
-                    <Image src="/RMTNProj1.jpg" alt="park with trees" fill objectFit="cover"  />
+
+                    {isLoaded &&
+                        <Image src={data[0]?.section2?.section2Image?.asset?.url} alt="park with trees" fill objectFit="cover"  />
+                    }
+
                 </div>
             </motion.div>
 

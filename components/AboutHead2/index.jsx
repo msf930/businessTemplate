@@ -22,7 +22,7 @@ const Index = () => {
         fetchData();
         setIsLoaded(true);
     }, []);
-    //console.log(data);
+
 
     return (
         <div className="AboutHead2">

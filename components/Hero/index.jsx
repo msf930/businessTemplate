@@ -21,6 +21,7 @@ const Index = () => {
         offset: ["start end", "end start"],
     });
     const backgroundY = useTransform(scrollYProgress, [0, 1], ["-80%", "-20%"]);
+    const backgroundYSm = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
 
     //data fetching
     const [data, setData] = useState([]);
@@ -56,17 +57,20 @@ const Index = () => {
                         {/*</div>*/}
                     </motion.div>
                 </motion.div>
-            </motion.div>
-            <div className="heroContainer2Sm-about">
-                <Image
-                    src={Hero2}
-                    alt="Hero"
-                    width="100%"
-                    id="HeroImg"
-                    className="HeroImg-aboutSm"
-                />
 
-            </div>
+            <motion.div className="aboutHeroParallax" style={{y: backgroundYSm}}>
+                <motion.div className="heroContainer2Sm-about">
+                    <Image
+                        src={data[0]?.heroImage?.asset?.url || Hero2}
+                        alt="Hero"
+                        id="HeroImg"
+                        fill
+                        objectFit="cover"
+                    />
+
+                </motion.div>
+            </motion.div>
+            </motion.div>
         </>
     );
 };

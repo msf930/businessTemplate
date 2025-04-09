@@ -1,6 +1,6 @@
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 
-import {NumberIcon, ErrorFilledIcon, HomeIcon, UnknownIcon} from '@sanity/icons'
+import {NumberIcon, ErrorFilledIcon, HomeIcon, UnknownIcon, CogIcon} from '@sanity/icons'
 import {instructions} from "@/sanity/schemaTypes/instructions";
 
 export const structure = (S) =>
@@ -15,6 +15,14 @@ export const structure = (S) =>
         //             .title('Editor Instructions')
         //             .schemaType('instructions')
         //             .documentId('instructions')),
+    S.listItem()
+        .title('General Settings')
+        .icon(CogIcon)
+        .child(
+            S.document()
+                .title('General Settings')
+                .schemaType('generalSettings')
+                .documentId('generalSettings')),
         S.listItem()
             .title('Home Page Settings')
             .icon(HomeIcon)
