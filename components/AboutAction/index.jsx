@@ -15,7 +15,7 @@ const Index = () => {
         <div className="ActionContainer">
             <h1 className="ActionTitle">We’d like to discuss a new project</h1>
             <ThemeProvider theme={theme}>
-                <Button className="ActionBtn" href="/contact">Contact Us</Button>
+                <Button variant="contained" color="primary" className="ActionBtn" href="/contact">Contact Us</Button>
             </ThemeProvider>
         </div>
     );

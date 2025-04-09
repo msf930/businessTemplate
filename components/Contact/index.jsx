@@ -5,7 +5,8 @@ import {Button} from "@mui/material";
 import {client} from "@/sanity/lib/client";
 import parsePhoneNumber from "libphonenumber-js";
 import {CgFacebook, CgInstagram} from "react-icons/cg";
-import Link from "next/link";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 
 const CONTACT_QUERY = `*[_type == "generalSettings"] {_id, phoneNumber, email, address { street, street2, city, state, zipCode }, instagram {isActive, instagramLink}, facebook {isActive, facebookLink}, }`;
 const options = { next: { revalidate: 30 } };
@@ -28,12 +29,16 @@ const Index = () => {
     if(contactData[0]?.phoneNumber){
         phoneNumber = parsePhoneNumber(`${contactData[0]?.phoneNumber}`, "US");
     }
-
+    const theme = createTheme({
+        palette: {
+            primary: {
+                main: "#000000",
+            }
+        },
+    });
     return (
         <div className="contactContainer">
             <div className="contactLeft">
-
-
                     <h1 className="leftTitle">Contact Us</h1>
                     <p className="leftText">Get in touch with us—fill out the form, and we'll respond as soon as possible!
                     </p>
@@ -99,7 +104,9 @@ const Index = () => {
                     </div>
                     <div className="contactInputContainer1">
                         <div className="contactInputItem2">
-                            <Button className="inputBtn">Submit</Button>
+                            <ThemeProvider theme={theme}>
+                                <Button className="inputBtn">Submit</Button>
+                            </ThemeProvider>
                         </div>
                     </div>
 

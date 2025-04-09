@@ -1529,7 +1529,8 @@ body {
     background-color: #f9fafa;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 60vh;
+    height: 800px;
+    padding-top: 120px;
 }
 @media only screen and (max-width: 600px) {
     .contact2Container{
@@ -1548,8 +1549,10 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-right: 10%;
-        padding-left: 10%;
+
+    }
+    .contact2LeftCont{
+        width: 100%;
     }
 }
 .contact2Left{
@@ -1557,6 +1560,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.contact2LeftCont{
+    width: 70%;
 }
 .left2Title{
     font-size: xxx-large;
