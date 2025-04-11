@@ -115,7 +115,7 @@ const Index = () => {
             </div>
         );
     }
-
+    console.log(contactData[0]);
     return (
         <div className="contactContainer">
             <div className="contactLeft">
@@ -124,7 +124,9 @@ const Index = () => {
                     </p>
                     {contactData[0] &&
                         <div className="text-left flex flex-col">
-                            <p className="leftText">{contactData[0]?.address?.street}, {contactData[0]?.address?.street2} {contactData[0]?.address?.city}, {contactData[0]?.address?.state}   {contactData[0]?.address?.zipCode}</p>
+                            {contactData[0]?.address?.street && contactData[0]?.address?.city && contactData[0]?.address?.state && contactData[0]?.address?.zipCode &&
+                                <p className="leftText">{contactData[0]?.address?.street}, {contactData[0]?.address?.street2} {contactData[0]?.address?.city}, {contactData[0]?.address?.state}   {contactData[0]?.address?.zipCode}</p>
+                            }
                             {contactData[0]?.email &&
                                 <a className="leftText" href={`mailto:${contactData[0]?.email}`}>{contactData[0]?.email}</a>
                             }

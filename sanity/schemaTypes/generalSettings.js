@@ -31,13 +31,13 @@ export const generalSettings = defineType({
             name: 'address',
             type: 'object',
             description: 'Enter the contact address',
-            validation: rule => rule.required(),
+
             fields: [
                 {
                     name: 'street',
                     type: 'string',
                     description: 'Street address',
-                    validation: rule => rule.required(),
+
                 },
                 {
                     name: 'street2',
@@ -48,19 +48,19 @@ export const generalSettings = defineType({
                     name: 'city',
                     type: 'string',
                     description: 'City',
-                    validation: rule => rule.required(),
+
                 },
                 {
                     name: 'state',
                     type: 'string',
                     description: 'State Abbreviation',
-                    validation: rule => rule.required(),
+
                 },
                 {
                     name: 'zipCode',
                     type: 'number',
                     description: 'Zip Code',
-                    validation: rule => rule.required(),
+
                 }
             ]
         }),
