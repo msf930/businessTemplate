@@ -15,7 +15,7 @@ import styles from "./styles.module.css";
 import ProjAction from "@/components/ProjAction";
 import Footer from "@/components/Footer";
 
-const PROJECT_QUERY = `*[_type == "projects" && slug.current == $projId][0] {_id, title, description, mainImage {alt, asset -> { _id, url } }, bodyText, slug, budget, duration, location, imageGallery[] { asset -> { _id, url } }, tag, testimonial, testimonialAuthor }`;
+const PROJECT_QUERY = `*[_type == "projects" && url.current == $projId][0] {_id, title, description, mainImage {alt, asset -> { _id, url } }, bodyText, url, budget, duration, location, imageGallery[] { asset -> { _id, url } }, tag, testimonial, testimonialAuthor }`;
 const options = { next: { revalidate: 30 } };
 
 const Page = async ({ params }) => {
@@ -25,7 +25,7 @@ const Page = async ({ params }) => {
     const project = await client.fetch(PROJECT_QUERY, {projId}, options);
 
     let budgetString = 0;
-    if(project.budget){
+    if(project?.budget){
         budgetString =  commaNumber(project.budget);
     }
 
@@ -39,7 +39,9 @@ const Page = async ({ params }) => {
             <SoloProjHero image={project.mainImage.asset.url} altText={project.mainImage.alt ? project.mainImage.alt : project.title}/>
             <div className={styles.ProjectInfoContainer}>
                 <div className={styles.ProjectTitleContainer}>
-                    <h1 className={styles.ProjectTitle}>{project.title}</h1>
+                    {project?.title &&
+                    <h1 className={styles.ProjectTitle}>{project?.title}</h1>
+                    }
                     {project?.tag &&
                         <p className={styles.ProjectTag}>{project.tag}</p>
                     }

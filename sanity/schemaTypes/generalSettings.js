@@ -3,8 +3,8 @@ import {CogIcon} from '@sanity/icons'
 import { defineField, defineType} from 'sanity'
 
 export const generalSettings = defineType({
-    name: 'generalSettings',
-    title: 'General Settings',
+    name: 'contactSettings',
+    title: 'Contact Settings',
     type: 'document',
     icon: CogIcon,
     fields: [

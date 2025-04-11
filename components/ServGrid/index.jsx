@@ -5,7 +5,7 @@ import Link from "next/link";
 import { client } from "@/sanity/lib/client";
 import RippleButton from "@/components/RippleButton";
 
-const SERVICE_QUERY = `*[_type == "services"] {_id, slug, title, description, mainImage { asset -> { _id, url } } }`;
+const SERVICE_QUERY = `*[_type == "services"] {_id, url, title, description, mainImage { asset -> { _id, url } } }`;
 const SERVICE_ORDER_QUERY = `*[_type == "servicesOrder"]{ services }`;
 
 const options = { next: { revalidate: 30 } };
@@ -26,7 +26,7 @@ const Index = async () => {
         }
     });
 
-    // console.log(orderedPosts);
+
     return (
         <div>
         <div className="ServGridContainer">
@@ -34,7 +34,7 @@ const Index = async () => {
                 <div className="ServGridCol">
                 {orderedPosts.map((post, index) => (
                     <div key={index} className="ServGridItem">
-                        <Link className="ServGridLinkContainer" href={`services/${post.slug.current}`}>
+                        <Link className="ServGridLinkContainer" href={`services/${post.url.current}`}>
                             <div className="ServImgItemCont">
                                 <RippleButton />
                                 <h1 className="ServImgText">Learn More</h1>

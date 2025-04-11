@@ -21,13 +21,13 @@ export const services = defineType({
             description: 'Short and sweet, but make sure it\'s descriptive',
         }),
         defineField({
-            name: 'slug',
+            name: 'url',
             type: 'slug',
             options: {
                 source: 'title',
                 isUnique: isUniqueSlug
             },
-            description: 'This is the URL path for the page. Please click "Generate" to create a slug',
+            description: 'Once you enter service title, click generate to make the service URL.',
         }),
         defineField({
             name: 'mainImage',

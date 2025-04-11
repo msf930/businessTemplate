@@ -659,7 +659,8 @@ body {
     background-color: #1e1e1e;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 60vh;
+    min-height: 60vh;
+    height: auto;
 }
 .contactLeft{
     color: white;
@@ -713,6 +714,26 @@ body {
     border-bottom: 2px solid white;
     outline: none;
 }
+.contactInput[type=tel]{
+    border: none;
+    border-bottom: 2px solid white;
+    background-color: #1e1e1e;
+}
+.contactInput[type=tel]:focus {
+    border: none;
+    border-bottom: 2px solid white;
+    outline: none;
+}
+.contactInput[type=email]{
+    border: none;
+    border-bottom: 2px solid white;
+    background-color: #1e1e1e;
+}
+.contactInput[type=email]:focus {
+    border: none;
+    border-bottom: 2px solid white;
+    outline: none;
+}
 .contactTextArea{
     border: 2px solid white;
     background-color: #1e1e1e;
@@ -724,8 +745,19 @@ body {
     height: 100px;
     outline: none;
 }
-.inputBtn{
+.captchaContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 2rem;
+}
+.captcha{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.inputBtn{
+
     background-color: white;
     color: black;
     border-radius: 0;

@@ -8,7 +8,7 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import ServAction from "@/components/ServAction";
 
-const SERVICE_QUERY = `*[_type == "services" && slug.current == $serviceId][0] {_id, title, mainImage {alt, asset -> { _id, url } }, body, slug }`;
+const SERVICE_QUERY = `*[_type == "services" && url.current == $serviceId][0] {_id, title, mainImage {alt, asset -> { _id, url } }, body, url }`;
 const options = { next: { revalidate: 30 } };
 
 

@@ -27,10 +27,11 @@ const Index = () => {
     return (
         <div className="footerContainer">
             <div className="footerSeg">
-                <h1><a href="/studio">©</a> {year} Rocky Mountain Remodels</h1>
+                <h1>© {year} Rocky Mountain Remodels</h1>
             </div>
+
             <div className="footerSeg">
-                <div className="flex flex-row gap-4">
+                <div className="flex flex-row gap-4 justify-center items-center">
                     {contactData[0]?.facebook?.isActive &&
                         <a href={`${contactData[0]?.facebook?.facebookLink}`} target="_blank">
                             <CgFacebook/>
@@ -41,6 +42,7 @@ const Index = () => {
                             <CgInstagram />
                         </a>
                     }
+                    <a href="/studio">Admin</a>
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@ import { defineType} from 'sanity'
 
 export const servicesOrder = defineType({
     name: 'servicesOrder',
-    title: 'Services Order',
+    title: 'Services Page Layout',
     type: 'document',
     icon: NumberIcon,
     fields: [

@@ -8,7 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import RippleButton from "@/components/RippleButton";
 
-const PROJECT_QUERY = `*[_type == "projects"] {_id, slug, title, description, mainImage { asset -> { _id, url } } }`;
+const PROJECT_QUERY = `*[_type == "projects"] {_id, url, title, description, mainImage { asset -> { _id, url } } }`;
 const PROJECT_ORDER_QUERY = `*[_type == "projectsOrder"]{ projects }`;
 
 const options = { next: { revalidate: 30 } };
@@ -27,7 +27,7 @@ const Index = async () => {
             orderedPosts.push(matchedPost);
         }
     });
-
+    console.log(orderedPosts);
     return (
         <div>
             <div className="ServGridContainer">
@@ -35,7 +35,7 @@ const Index = async () => {
                     <div className="ServGridCol">
                         {orderedPosts.map((post, index) => (
                             <div key={index} className="ServGridItem">
-                                <Link className="ServGridLinkContainer" href={`projects/${post.slug.current}`}>
+                                <Link className="ServGridLinkContainer" href={`projects/${post.url.current}`}>
                                     <div className="ServImgItemCont">
                                         <RippleButton />
                                         <h1 className="ServImgText">Learn More</h1>

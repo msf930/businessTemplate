@@ -16,13 +16,13 @@ export const structure = (S) =>
         //             .schemaType('instructions')
         //             .documentId('instructions')),
     S.listItem()
-        .title('General Settings')
+        .title('Contact Settings')
         .icon(CogIcon)
         .child(
             S.document()
-                .title('General Settings')
-                .schemaType('generalSettings')
-                .documentId('generalSettings')),
+                .title('Contact Settings')
+                .schemaType('contactSettings')
+                .documentId('contactSettings')),
         S.listItem()
             .title('Home Page Settings')
             .icon(HomeIcon)
@@ -41,20 +41,20 @@ export const structure = (S) =>
                     .documentId('aboutPage')),
         S.documentTypeListItem('services').title('Services'),
         S.listItem()
-            .title('Services Order')
+            .title('Services Page Layout')
             .icon(NumberIcon)
             .child(
                 S.document()
-                    .title('Services Page Order')
+                    .title('Services Page Layout')
                     .schemaType('servicesOrder')
                     .documentId('servicesOrder')),
         S.documentTypeListItem('projects').title('Projects'),
         S.listItem()
-            .title('Projects Order')
+            .title('Projects Page Layout')
             .icon(NumberIcon)
             .child(
                 S.document()
-                    .title('Projects Page Order')
+                    .title('Projects Page Layout')
                     .schemaType('projectsOrder')
                     .documentId('projectsOrder')),
         // S.listItem()
