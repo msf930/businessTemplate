@@ -12,7 +12,7 @@ import React, {useEffect, useState} from "react";
 import { usePathname  } from "next/navigation";
 import {client} from "@/sanity/lib/client";
 
-const CONTACT_QUERY = `*[_type == "generalSettings"] {_id, logo { asset -> { _id, url} }}`;
+const CONTACT_QUERY = `*[_type == "contactSettings"] {_id, logo { asset -> { _id, url} }}`;
 const options = { next: { revalidate: 30 } };
 
 export default function Nav() {

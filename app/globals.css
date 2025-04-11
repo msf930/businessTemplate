@@ -1561,7 +1561,8 @@ body {
     background-color: #f9fafa;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 800px;
+    min-height: 800px;
+    height: auto;
     padding-top: 120px;
 }
 @media only screen and (max-width: 600px) {
@@ -1646,12 +1647,43 @@ body {
     background-color: #f9fafa;
     border-bottom: 2px solid black;
 }
+.contact2Input[type=text]:focus {
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+}
+.contact2Input[type=tel]{
+    border: none;
+    background-color: #f9fafa;
+    border-bottom: 2px solid black;
+}
+.contact2Input[type=tel]:focus {
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+}
+.contact2Input[type=email]{
+    border: none;
+    background-color: #f9fafa;
+    border-bottom: 2px solid black;
+}
+.contact2Input[type=email]:focus {
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+}
 .contact2InputTextArea{
     height: 150px;
     border: 2px solid black;
     background-color: #f9fafa;
     box-sizing: border-box;
-
+}
+.contact2InputTextArea:focus{
+    height: 150px;
+    border: 2px solid black;
+    background-color: #f9fafa;
+    box-sizing: border-box;
+    outline: none;
 }
 .contact2InputItem{
     display: flex;
@@ -1663,6 +1695,7 @@ body {
     flex-direction: column;
     width: 100%;
 }
+
 .input2Btn{
     margin-top: 2rem;
     background-color: black;

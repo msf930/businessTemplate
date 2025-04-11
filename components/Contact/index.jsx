@@ -10,7 +10,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 
-const CONTACT_QUERY = `*[_type == "generalSettings"] {_id, phoneNumber, email, address { street, street2, city, state, zipCode }, instagram {isActive, instagramLink}, facebook {isActive, facebookLink}, }`;
+const CONTACT_QUERY = `*[_type == "contactSettings"] {_id, phoneNumber, email, address { street, street2, city, state, zipCode }, instagram {isActive, instagramLink}, facebook {isActive, facebookLink}, }`;
 const options = { next: { revalidate: 30 } };
 
 const Index = () => {
@@ -77,8 +77,9 @@ const Index = () => {
                     </p>
                     {contactData[0] &&
                         <div className="text-left flex flex-col">
-                            <p className="leftText">{contactData[0]?.address?.street}, {contactData[0]?.address?.street2} {contactData[0]?.address?.city}, {contactData[0]?.address?.state}   {contactData[0]?.address?.zipCode}</p>
-                            {contactData[0]?.email &&
+                            {contactData[0]?.address?.street && contactData[0]?.address?.city && contactData[0]?.address?.state && contactData[0]?.address?.zipCode &&
+                                <p className="leftText">{contactData[0]?.address?.street}, {contactData[0]?.address?.street2} {contactData[0]?.address?.city}, {contactData[0]?.address?.state}   {contactData[0]?.address?.zipCode}</p>
+                            }                            {contactData[0]?.email &&
                                 <a className="leftText" href={`mailto:${contactData[0]?.email}`}>{contactData[0]?.email}</a>
                             }
                             {contactData[0]?.phoneNumber &&
@@ -115,7 +116,7 @@ const Index = () => {
             </div>
         );
     }
-    console.log(contactData[0]);
+
     return (
         <div className="contactContainer">
             <div className="contactLeft">

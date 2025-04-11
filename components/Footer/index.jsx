@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react';
 import {CgFacebook, CgInstagram} from "react-icons/cg";
 import {client} from "@/sanity/lib/client";
 
-const CONTACT_QUERY = `*[_type == "generalSettings"] {_id, instagram {isActive, instagramLink}, facebook {isActive, facebookLink}, }`;
+const CONTACT_QUERY = `*[_type == "contactSettings"] {_id, instagram {isActive, instagramLink}, facebook {isActive, facebookLink}, }`;
 const options = { next: { revalidate: 30 } };
 
 const Index = () => {

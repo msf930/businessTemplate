@@ -17,7 +17,7 @@ import parsePhoneNumber from 'libphonenumber-js'
 
 const IMAGE_QUERY = `*[_type == "homePage"] {_id, heroImage { asset -> { _id, url} } }`;
 const BLUR_QUERY = `*[_type == "homePage"] {_id, heroImage { asset -> { metadata {lqip} } } }`;
-const PHONE_QUERY = `*[_type == "generalSettings"] {_id, phoneNumber }`;
+const PHONE_QUERY = `*[_type == "contactSettings"] {_id, phoneNumber }`;
 const options = { next: { revalidate: 30 } };
 
 
