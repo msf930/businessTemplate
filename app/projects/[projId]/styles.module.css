@@ -118,11 +118,12 @@
     }
     .ProjectTitleContainer{
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin: 20px 0;
+        flex-direction: column;
+        justify-content: center;
+        margin: 10px 0;
     }
     .ProjectTitle{
+        display: none;
         font-size: 1.5rem;
         font-weight: bold;
         margin-bottom: 1rem;
@@ -130,20 +131,29 @@
     .ProjectDetailsContainer{
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        margin-bottom: 1rem;
+        justify-content: center;
+
+
     }
     .ProjectInfoItem{
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         gap: 1rem;
-        width: 200px;
+        width: 100%;
     }
     .ProjectInfoTitle{
         font-weight: bold;
     }
     .ProjectInfoText{
         font-weight: normal;
+    }
+    .ProjectTagCont{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+
     }
     .ProjectTag{
         font-size: 1rem;
@@ -152,6 +162,7 @@
         background-color: #DEA565;
         color: white;
         padding: 0.5rem 1rem;
+        display: inline-block;
     }
     .ServDynTextCont{
         position: relative;

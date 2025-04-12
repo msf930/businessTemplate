@@ -27,7 +27,7 @@ const Index = () => {
     return (
         <div className="footerContainer">
             <div className="footerSeg">
-                <h1>© {year} Rocky Mountain Remodels</h1>
+                <h1>© {year} <b>Rocky Mountain Remodels</b> </h1>
             </div>
 
             <div className="footerSeg">
@@ -44,6 +44,9 @@ const Index = () => {
                     }
                     <a href="/studio">Admin</a>
                 </div>
+            </div>
+            <div className="footerSeg">
+                <h1>Powered by <a href="http://servaldesigns.com"><b>Serval Designs</b></a></h1>
             </div>
         </div>
     );

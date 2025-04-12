@@ -104,11 +104,13 @@ export const homePage = defineType({
                                 title: 'Service Item',
                                 type: 'reference',
                                 to: [{type: 'services'}],
+                                validation: rule => rule.required(),
                             },
                             {
                                 name: 'serviceTitle',
                                 type: 'string',
                                 title: 'Service Title',
+                                validation: rule => rule.required(),
                             },
                             {
                                 name: 'serviceImage',
@@ -118,6 +120,7 @@ export const homePage = defineType({
                                     metadata: ['blurhash']
                                 },
                                 title: 'Service Image',
+                                validation: rule => rule.required(),
                             }
                         ]
                     },

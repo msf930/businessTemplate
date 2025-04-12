@@ -130,7 +130,7 @@ body {
 
 .footerContainer{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     height: 15vh;
 }
 .footerSeg{
@@ -142,7 +142,7 @@ body {
 @media only screen and (max-width: 600px) {
     .footerContainer{
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
         height: 15vh;
     }
 }
@@ -660,6 +660,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: 60vh;
+    padding: 50px 0;
     height: auto;
 }
 .contactLeft{

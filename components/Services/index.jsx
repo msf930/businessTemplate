@@ -18,7 +18,7 @@ import RippleButton from "@/components/RippleButton";
 
 
 const SERVICE_QUERY = `*[_type == "homePage"] {_id, services[] { serviceTitle, serviceRef {_ref}, serviceImage { asset -> { _id, url } } } }`;
-const SERVICE_REF_QUERY = `*[_type == "services"]{_id, slug}`;
+const SERVICE_REF_QUERY = `*[_type == "services"]{_id, url}`;
 const options = { next: { revalidate: 30 } };
 
 const Index = () => {
@@ -36,7 +36,7 @@ const Index = () => {
                 const matchingRef = refResult.find(ref => ref._id === item.serviceRef._ref);
                 return {
                     ...item,
-                    slug: matchingRef ? matchingRef.slug : null
+                    url: matchingRef ? matchingRef.url : null
                 };
             });
             setData(updatedData);
@@ -63,7 +63,7 @@ const Index = () => {
             {isLoaded &&
                 <div className={styles.serviceContainer}>
                     {data.map((item, index) => (
-                        <Link key={index} href={item?.slug ? `services/${item?.slug?.current}` : "/services"} className={styles.serviceItemContainer}>
+                        <Link key={index} href={item?.url ? `services/${item?.url?.current}` : "/services"} className={styles.serviceItemContainer}>
                                 <RippleButton/>
                                 <h1 className={styles.serviceItemText}>{item?.serviceTitle}</h1>
                                 {/*<div className={styles.serviceItemTextLearn}>Learn More</div>*/}
@@ -77,7 +77,7 @@ const Index = () => {
                 <div className={styles.serviceContainerSm}>
                     {data.map((item, index) => (
                         <div className={styles.serviceItemContainer} key={index}>
-                            <Link  href={item?.slug ? `services/${item?.slug?.current}` : "/services"} className={styles.serviceItemText}>{item?.serviceTitle}</Link>
+                            <Link  href={item?.url ? `services/${item?.url?.current}` : "/services"} className={styles.serviceItemText}>{item?.serviceTitle}</Link>
                             <Image className={styles.serviceItemImg} src={item?.serviceImage?.asset?.url} alt={item?.serviceTitle} fill objectFit="cover"/>
                         </div>
                         ))}

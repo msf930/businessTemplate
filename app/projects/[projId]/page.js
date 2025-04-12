@@ -33,8 +33,8 @@ const Page = async ({ params }) => {
         <div>
             <NavBar/>
             <div className="flex flex-col text-center bg-[#F5F5F5]">
-                <h1 className="text-4xl mt-28 font-bold capitalize mb-4">{project.title}</h1>
-                <p className=" mb-10">{project.description}</p>
+                {project?.title && <h1 className="text-4xl mt-28 font-bold capitalize mb-4 px-4">{project?.title}</h1>}
+                {project?.description && <p className=" mb-10 px-4">{project?.description}</p>}
             </div>
             <SoloProjHero image={project.mainImage.asset.url} altText={project.mainImage.alt ? project.mainImage.alt : project.title}/>
             <div className={styles.ProjectInfoContainer}>
@@ -43,7 +43,9 @@ const Page = async ({ params }) => {
                     <h1 className={styles.ProjectTitle}>{project?.title}</h1>
                     }
                     {project?.tag &&
-                        <p className={styles.ProjectTag}>{project.tag}</p>
+                        <div className={styles.ProjectTagCont}>
+                            <p className={styles.ProjectTag}>{project.tag}</p>
+                        </div>
                     }
                 </div>
                 <div className={styles.ProjectDetailsContainer}>
