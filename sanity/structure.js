@@ -1,6 +1,6 @@
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 
-import {NumberIcon, ErrorFilledIcon, HomeIcon, UnknownIcon, CogIcon} from '@sanity/icons'
+import {NumberIcon, ErrorFilledIcon, HomeIcon, UnknownIcon, CogIcon, BookIcon} from '@sanity/icons'
 import {instructions} from "@/sanity/schemaTypes/instructions";
 
 export const structure = (S) =>
@@ -57,6 +57,7 @@ export const structure = (S) =>
                     .title('Projects Page Layout')
                     .schemaType('projectsOrder')
                     .documentId('projectsOrder')),
+        S.documentTypeListItem('blogs').title('Blogs'),
         // S.listItem()
         //     .title('Settings')
         //     .child(

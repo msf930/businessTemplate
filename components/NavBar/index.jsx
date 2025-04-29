@@ -139,6 +139,9 @@ export default function Nav() {
                         <Link href="/projects">Projects</Link>
                     </div>
                     <div>
+                        <Link href="/blog">Blog</Link>
+                    </div>
+                    <div>
                         <Link href="/contact">Contact</Link>
                     </div>
 
@@ -194,6 +197,15 @@ export default function Nav() {
                                     onClick={handleShowNavbar}
                                 >
                                     Projects
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/blog"
+                                    className={pathname === "/blog" ? styles.navMenuLinkActive : styles.navMenuLink}
+                                    onClick={handleShowNavbar}
+                                >
+                                    Blog
                                 </Link>
                             </li>
                             <li>

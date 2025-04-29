@@ -11,7 +11,7 @@ export async function isUniqueSlug(slug, context) {
         published: id,
         slug,
     }
-    const query = `!defined(*[!(_id in [$draft, $published]) && slug.current == $slug][0]._id)`
+    const query = `!defined(*[!(_id in [$draft, $published]) && url.current == $slug][0]._id)`
     const result = await client.fetch(query, params)
     return result
 }

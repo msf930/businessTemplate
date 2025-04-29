@@ -6,7 +6,8 @@ import {projectsOrder} from './projectsOrder'
 import { homePage } from './homePage'
 import { aboutPage } from './aboutPage'
 import {generalSettings} from "@/sanity/schemaTypes/generalSettings";
+import { blogs } from './blogs';
 
 export const schema = {
-  types: [services, projects, projectsOrder, servicesOrder, aboutPage, homePage, generalSettings, instructions],
+  types: [services, projects, projectsOrder, servicesOrder, aboutPage, homePage, generalSettings, instructions, blogs],
 }

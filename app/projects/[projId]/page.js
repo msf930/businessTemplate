@@ -15,7 +15,7 @@ import styles from "./styles.module.css";
 import ProjAction from "@/components/ProjAction";
 import Footer from "@/components/Footer";
 
-const PROJECT_QUERY = `*[_type == "projects" && url.current == $projId][0] {_id, title, description, mainImage {alt, asset -> { _id, url } }, bodyText, url, budget, duration, location, imageGallery[] { asset -> { _id, url } }, tag, testimonial, testimonialAuthor }`;
+const PROJECT_QUERY = `*[_type == "projects" && url.current == $projId][0] {_id, title, description, mainImage {alt, asset -> { _id, url } }, bodyText, url, budget, duration, location, imageGallery[] { asset -> { _id, url  }, hotspot }, tag, testimonial, testimonialAuthor }`;
 const options = { next: { revalidate: 30 } };
 
 const Page = async ({ params }) => {
@@ -32,9 +32,9 @@ const Page = async ({ params }) => {
     return (
         <div>
             <NavBar/>
-            <div className="flex flex-col text-center bg-[#F5F5F5]">
+            <div className="flex flex-col justify-center items-center text-center bg-[#F5F5F5]">
                 {project?.title && <h1 className="text-4xl mt-28 font-bold capitalize mb-4 px-4">{project?.title}</h1>}
-                {project?.description && <p className=" mb-10 px-4">{project?.description}</p>}
+                {project?.description && <p className=" mb-10 px-4 w-[90vw] md:w-[60vw]">{project?.description}</p>}
             </div>
             <SoloProjHero image={project.mainImage.asset.url} altText={project.mainImage.alt ? project.mainImage.alt : project.title}/>
             <div className={styles.ProjectInfoContainer}>
@@ -85,7 +85,8 @@ const Page = async ({ params }) => {
                     <div className={styles.GalleryColumns}>
                         {project?.imageGallery && project.imageGallery.map((image, index) => (
                             <div className={styles.GalleryImg} key={index}>
-                                <Image  src={image.asset.url} alt={project.title} fill objectFit="cover" />
+                                <Image  src={image.asset.url} alt={project.title} fill objectFit="cover" objectPosition={`${image.hotspot?.x * 100}% ${image.hotspot?.y * 100}%`}/>
+                                {/*<Image  src={image.asset.url} alt={project.title} fill objectFit="cover" objectPosition={`50% 20%`}/>*/}
                             </div>
                         ))}
                     </div>

@@ -55,11 +55,16 @@
     left: 3%;
     width: 94%;
     z-index: 11;
-    padding: 50px;
+    padding-top: 80px;
     overflow: hidden;
   }
   .overlayText h1 {
     font-size: 3rem;
+    color: white;
+    z-index: 12;
+  }
+  .overlayText h2 {
+    font-size: 1rem;
     color: white;
     z-index: 12;
   }
@@ -126,13 +131,23 @@
     left: 10%;
     z-index: 11;
     padding: 50px;
+    width: 50%;
     overflow: hidden;
+    background-color: #33333310;
+    backdrop-filter: blur(5px);
   }
 
   .overlayText h1{
     font-size: 4vw;
     line-height: 1.4;
     color: white;
+    width: 80%;
+  }
+  .overlayText h2{
+    font-size: 1.5vw;
+    line-height: 1.4;
+    color: white;
+    width: 80%;
   }
   .buttonCont{
     display: flex;

@@ -140,15 +140,18 @@ export default function Index() {
                     }}
         >
 
-          <motion.h1
+          <motion.div
               initial={{x: -40, opacity: 0}}
               animate={{x: 0, opacity: 1}}
               transition={{ease: "easeInOut", duration: 0.8}}
           >
-            Rocky Mountain
-            <br />
-            Remodels
-          </motion.h1>
+            <h1>
+              Rocky Mountain
+              <br />
+              Remodels
+            </h1>
+            <h2>Rocky Mountain Remodels has over 35 combined years of experience remodeling residential, commercial, and retail spaces</h2>
+          </motion.div>
           <motion.div
               className={styles.buttonCont}
               initial={{x: 40, opacity: 0}}
@@ -156,7 +159,7 @@ export default function Index() {
               transition={{ease: "easeInOut", duration: 0.8}}
           >
               <ThemeProvider theme={theme}>
-                <Button variant="outlined" className={styles.wowButton2} href="/contact">Get In Touch</Button>
+                <Button variant="contained" color="primary"  href="/contact">Get In Touch</Button>
                 {/*<Button variant="outlined" className={styles.wowButton2} href="/about">About</Button>*/}
               </ThemeProvider>
             </motion.div>
@@ -191,9 +194,9 @@ export default function Index() {
 
               <ThemeProvider theme={theme}>
                 <Button
-                    variant="outlined"
+                    variant="contained"
                     color="primary"
-                    className={styles.wowButton2}
+                    // className={styles.wowButton2}
                     href="/contact">
                   Get In Touch
                 </Button>
