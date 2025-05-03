@@ -48,26 +48,49 @@ const Page = async ({ params }) => {
                         </div>
                     }
                 </div>
-                <div className={styles.ProjectDetailsContainer}>
-                    {project?.budget &&
-                        <div className={styles.ProjectInfoItem}>
-                            <h1 className={styles.ProjectInfoTitle}>Budget</h1>
-                            <p className={styles.ProjectInfoText}>${budgetString}</p>
-                        </div>
-                    }
-                    {project?.duration &&
-                        <div className={styles.ProjectInfoItem}>
-                            <h1 className={styles.ProjectInfoTitle}>Duration</h1>
-                            <p className={styles.ProjectInfoText}>{project.duration}</p>
-                        </div>
-                    }
-                    {project?.location &&
-                        <div className={styles.ProjectInfoItem}>
-                            <h1 className={styles.ProjectInfoTitle}>Location</h1>
-                            <p className={styles.ProjectInfoText}>{project.location}</p>
-                        </div>
-                    }
+                <div className={styles.ProjectDetails}>
+                    <div className={styles.ProjectDetailsContainer}>
+                        {project?.budget &&
+                            <div className={styles.ProjectInfoItem}>
+                                <h1 className={styles.ProjectInfoTitle}>Budget</h1>
+
+                            </div>
+                        }
+                        {project?.duration &&
+                            <div className={styles.ProjectInfoItem}>
+                                <h1 className={styles.ProjectInfoTitle}>Duration</h1>
+
+                            </div>
+                        }
+                        {project?.location &&
+                            <div className={styles.ProjectInfoItem}>
+                                <h1 className={styles.ProjectInfoTitle}>Location</h1>
+
+                            </div>
+                        }
+                    </div>
+                    <div className={styles.ProjectDetailsContainerData}>
+                        {project?.budget &&
+                            <div className={styles.ProjectInfoItemData}>
+
+                                <p className={styles.ProjectInfoText}>${budgetString}</p>
+                            </div>
+                        }
+                        {project?.duration &&
+                            <div className={styles.ProjectInfoItemData}>
+
+                                <p className={styles.ProjectInfoText}>{project.duration}</p>
+                            </div>
+                        }
+                        {project?.location &&
+                            <div className={styles.ProjectInfoItemData}>
+
+                                <p className={styles.ProjectInfoText}>{project.location}</p>
+                            </div>
+                        }
+                    </div>
                 </div>
+
             </div>
             <div className={styles.ServDynTextCont}>
                 <div className={styles.PortableTextCont}>

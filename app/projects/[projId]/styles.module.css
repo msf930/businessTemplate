@@ -20,17 +20,34 @@
     justify-content: space-between;
     margin-bottom: 1rem;
 }
-.ProjectInfoItem{
+.ProjectDetailsContainerData{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    gap: 1rem;
-    width: 200px;
+    margin-bottom: 1rem;
+    width: min-content;
+}
+.ProjectDetails{
+    display: grid;
+    grid-template-columns: min-content auto;
+}
+.ProjectInfoItem{
+    display: grid;
+    grid-template-columns: max-content auto;
+    column-gap: 2rem; /* Adjust gap here */
+
+}
+.ProjectInfoItemData{
+    text-align: end;
+
 }
 .ProjectInfoTitle{
     font-weight: bold;
 }
 .ProjectInfoText{
     font-weight: normal;
+    display: inline-block;
+    white-space: nowrap;
 }
 .ProjectTag{
     font-size: 1rem;
