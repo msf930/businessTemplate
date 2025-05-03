@@ -60,6 +60,7 @@ export default function Index() {
     const fetchData = async () => {
       const result = await client.fetch(BLUR_QUERY, {}, options);
       setBlurImage(result);
+      console.log(result);
     };
     fetchData();
     setBlurIsLoaded(true);
@@ -71,6 +72,7 @@ export default function Index() {
     const fetchData = async () => {
       const result = await client.fetch(IMAGE_QUERY, {}, options);
       setData(result);
+
     };
     fetchData();
     setIsLoaded(true);
@@ -111,13 +113,13 @@ export default function Index() {
           {/*  <Blurhash hash={blurImage[0]?.heroImage?.asset?.metadata?.blurHash} width={100} height={100}  />*/}
           {/*}*/}
 
-          {blurImage[0]?.heroImage?.asset?.metadata?.lqip &&
+          {data[0]?.heroImage?.asset?.url &&
               <Image
-                  src={data[0]?.heroImage?.asset?.url ? data[0]?.heroImage?.asset?.url : blurImage[0]?.heroImage?.asset?.metadata?.lqip}
+                  src={data[0]?.heroImage?.asset?.url}
                   alt="Hero Image"
                   objectFit="cover"
-                  placeholder="blur"
-                  blurDataURL={blurImage[0]?.heroImage?.asset?.metadata?.lqip}
+                  // placeholder="blur"
+                  // blurDataURL={blurImage[0]?.heroImage?.asset?.metadata?.lqip}
                   fill
               />
           }
@@ -173,13 +175,13 @@ export default function Index() {
               y: smBackgroundYScroll,
             }}
         >
-          {blurImage[0]?.heroImage?.asset?.metadata?.lqip &&
+          {data[0]?.heroImage?.asset?.url &&
               <Image
-                  src={data[0]?.heroImage?.asset?.url ? data[0]?.heroImage?.asset?.url : blurImage[0]?.heroImage?.asset?.metadata?.lqip}
+                  src={data[0]?.heroImage?.asset?.url}
                   alt="Hero Image"
                   objectFit="cover"
-                  placeholder="blur"
-                  blurDataURL={blurImage[0]?.heroImage?.asset?.metadata?.lqip}
+                  // placeholder="blur"
+                  // blurDataURL={blurImage[0]?.heroImage?.asset?.metadata?.lqip}
                   fill
               />
           }
