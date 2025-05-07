@@ -241,6 +241,7 @@
         margin-bottom: 1rem;
     }
     .ProjectImageContainer{
+        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -263,6 +264,7 @@
         margin-bottom: 1rem;
     }
     .GalleryImg{
+        position: relative;
         width: 100vw;
         height: calc(100vw * .66);
         z-index: 1;

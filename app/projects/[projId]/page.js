@@ -108,7 +108,13 @@ const Page = async ({ params }) => {
                     <div className={styles.GalleryColumns}>
                         {project?.imageGallery && project.imageGallery.map((image, index) => (
                             <div className={styles.GalleryImg} key={index}>
-                                <Image  src={image.asset.url} alt={project.title} fill objectFit="cover" objectPosition={`${image.hotspot?.x * 100}% ${image.hotspot?.y * 100}%`}/>
+                                <Image
+                                    src={image.asset.url}
+                                    alt={project.title}
+                                    fill
+                                    objectFit="cover"
+                                    objectPosition={`${image.hotspot?.x * 100}% ${image.hotspot?.y * 100}%`}
+                                />
                                 {/*<Image  src={image.asset.url} alt={project.title} fill objectFit="cover" objectPosition={`50% 20%`}/>*/}
                             </div>
                         ))}
