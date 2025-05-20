@@ -12,6 +12,9 @@ const inter = Roboto({ subsets: ["latin"] });
 export const metadata = {
   title: "Rocky Mountain Remodels",
   description: "Rocky Mountain Remodels has over 35 combined years of experience remodeling residential, commercial, and retail spaces",
+  verification: {
+    google: "3E0o470gwiZ9udbwNnCorkvn9AiccxYpLWv56ns8BGE",
+},
 };
 
 export default function RootLayout({ children }) {
