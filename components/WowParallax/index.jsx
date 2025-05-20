@@ -8,8 +8,9 @@ import styles from "./styles.module.css";
 import Image from "next/image";
 import {client} from "@/sanity/lib/client";
 
+import test from "@/public/homeHero.jpg";
 
-const SECTION_QUERY = `*[_type == "homePage"] {_id, section2 { section2Image { asset -> { _id, url } } } }`;
+const SECTION_QUERY = `*[_type == "homePage"] {_id, section2 { section2Image { asset -> { _id, url }, alt } } }`;
 const options = { next: { revalidate: 30 } };
 
 export default function MultiLayerParallax() {
@@ -22,6 +23,7 @@ export default function MultiLayerParallax() {
         setIsLoaded(false);
         const fetchData = async () => {
             const result = await client.fetch(SECTION_QUERY, {}, options);
+
             setData(result);
             setIsLoaded(true);
         };
@@ -50,24 +52,25 @@ export default function MultiLayerParallax() {
                 }}
             >
                 <div className={styles.parallaxImg}>
-                    {isLoaded && <Image src={data[0]?.section2?.section2Image?.asset?.url} alt="park with trees" fill objectFit="cover"  />}
+                    {isLoaded && <Image src={data[0]?.section2?.section2Image?.asset?.url} alt={data[0]?.section2?.section2Image?.alt} fill objectFit="cover"  />}
 
                 </div>
             </motion.div>
-            <motion.div
+            <div
                 className={styles.parallaxImgContSm}
-                style={{
-                    y: backgroundYSm,
-                }}
+                // style={{
+                //     y: backgroundYSm,
+                // }}
             >
                 <div className={styles.parallaxImg}>
 
                     {isLoaded &&
-                        <Image src={data[0]?.section2?.section2Image?.asset?.url} alt="park with trees" fill objectFit="cover"  />
+                        <Image src={data[0]?.section2?.section2Image?.asset?.url} alt={data[0]?.section2?.section2Image?.alt} fill objectFit="cover"  />
+                        // <Image src={test} alt={data[0]?.section2?.section2Image?.alt} fill objectFit="cover"  />
                     }
 
                 </div>
-            </motion.div>
+            </div>
 
         </div>
     );
