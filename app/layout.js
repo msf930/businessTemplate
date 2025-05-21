@@ -7,6 +7,7 @@ import { ReactLenis } from "@/app/utils/lenis";
 import { GoogleTagManager } from '@next/third-parties/google'
 import MicrosoftClarity from "@/metrics/MicrosoftClarity";
 
+
 const inter = Roboto({ subsets: ["latin"] });
 
 export const metadata = {
