@@ -60,7 +60,6 @@ export default function Index() {
     const fetchData = async () => {
       const result = await client.fetch(BLUR_QUERY, {}, options);
       setBlurImage(result);
-      console.log(result);
     };
     fetchData();
     setBlurIsLoaded(true);
@@ -108,21 +107,33 @@ export default function Index() {
           className="absolute inset-0 z-10 mt-[100px] brightness-[0.7]"
 
         >
-          {/*<div className="absolute z-10 top-0 left-0 w-full h-full bg-black opacity-30"></div>*/}
+          <div className="absolute z-10 top-0 left-0 w-full h-full bg-black opacity-30"></div>
           {/*{blurImage[0]?.heroImage?.asset?.metadata?.blurHash &&*/}
           {/*  <Blurhash hash={blurImage[0]?.heroImage?.asset?.metadata?.blurHash} width={100} height={100}  />*/}
           {/*}*/}
 
-          {data[0]?.heroImage?.asset?.url &&
-              <Image
-                  src={data[0]?.heroImage?.asset?.url}
-                  alt="Hero Image"
-                  objectFit="cover"
-                  // placeholder="blur"
-                  // blurDataURL={blurImage[0]?.heroImage?.asset?.metadata?.lqip}
-                  fill
-              />
-          }
+          {/*{data[0]?.heroImage?.asset?.url &&*/}
+          {/*    <Image*/}
+          {/*        src={data[0]?.heroImage?.asset?.url}*/}
+          {/*        alt="Hero Image"*/}
+          {/*        objectFit="cover"*/}
+          {/*        // placeholder="blur"*/}
+          {/*        // blurDataURL={blurImage[0]?.heroImage?.asset?.metadata?.lqip}*/}
+          {/*        fill*/}
+          {/*    />*/}
+          {/*}*/}
+
+          {blurImage[0]?.heroImage?.asset?.metadata?.lqip &&
+            <Image
+              src={data[0]?.heroImage?.asset?.url ? data[0]?.heroImage?.asset?.url : blurImage[0]?.heroImage?.asset?.metadata?.lqip}
+              alt="Hero Image"
+              objectFit="cover"
+              placeholder="blur"
+              blurDataURL={blurImage[0]?.heroImage?.asset?.metadata?.lqip}
+              fill
+          />}
+
+
 
 
 

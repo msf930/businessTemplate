@@ -14,7 +14,7 @@ export const homePage = defineType({
             type: 'image',
             options: {
                 hotspot: true,
-                metadata: ['blurhash']
+                metadata: ['blurhash','lqip']
             },
             fields: [
                 {
