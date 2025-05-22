@@ -15,10 +15,17 @@ export const metadata = {
   description: "Rocky Mountain Remodels has over 35 combined years of experience remodeling residential, commercial, and retail spaces",
   verification: {
     google: "3E0o470gwiZ9udbwNnCorkvn9AiccxYpLWv56ns8BGE",
-},
+  },
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
+  },
+  metadataBase: new URL('https://www.rockymtnremodels.com/'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    images: '/RMTNLogo.png',
   },
 };
 
