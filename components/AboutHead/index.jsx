@@ -3,6 +3,8 @@
 import React, {useEffect, useState} from 'react';
 
 import {client} from "@/sanity/lib/client";
+import {RichTextComponents} from "@/components/RichTextComponents";
+import {PortableText} from "next-sanity";
 
 const ABOUT_QUERY = `*[_type == "aboutPage"] {_id, headerDescription }`;
 const options = { next: { revalidate: 30 } };
@@ -26,7 +28,7 @@ const Index = () => {
         <div className="AboutHead">
             <h1 className="text-4xl font-bold mb-10 mt-10 px-10">About Rocky Mountain Remodels</h1>
             <div className="AboutPContainer">
-                { isLoaded && <p className="">{data[0]?.headerDescription}</p>}
+                {isLoaded && <PortableText value={data[0]?.headerDescription} components={RichTextComponents}/>}
             </div>
         </div>
     );

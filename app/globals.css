@@ -887,9 +887,10 @@ body {
 }
 .AboutPContainer{
     position: relative;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 20%;
+    padding-right: 20%;
     margin-bottom: 8vh;
+    text-align: start;
 }
 .AboutHead2{
     background-color: var(--bg-white);
@@ -947,6 +948,8 @@ body {
     line-height: 1.5rem;
 }
 @media only screen and (max-width: 600px) {
+
+
     .aboutBioCont{
         display: flex;
         flex-direction: column;
@@ -971,6 +974,7 @@ body {
         padding-left: 10%;
         padding-right: 10%;
         margin-bottom: 8vh;
+        text-align: start;
     }
 }
 .GridContainer{

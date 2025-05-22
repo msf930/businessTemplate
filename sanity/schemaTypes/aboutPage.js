@@ -11,7 +11,8 @@ export const aboutPage = defineType({
     fields: [
         defineField({
             name: 'headerDescription',
-            type: 'text',
+            type: 'array',
+            of: [{type: 'block'}],
             description: 'About page header description',
             validation: rule => rule.required().min(1),
         }),
