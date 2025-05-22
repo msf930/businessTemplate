@@ -44,7 +44,7 @@ export const aboutPage = defineType({
                 {
                     name: 'whoWeAreTeam',
                     type: 'array',
-                    description: 'Who we are team members.  Remove all team members to hide section. Max - 3 members',
+                    description: 'Who we are team members.  Remove all team members to hide section.',
                     of: [
                         {
                             type: 'object',
@@ -66,10 +66,15 @@ export const aboutPage = defineType({
                                     type: 'string',
                                     title: 'Member Title',
                                 },
+                                {
+                                    name: 'memberBio',
+                                    type: 'text',
+                                    title: 'Member Bio',
+                                },
                             ]
                         }
                     ],
-                    validation: rule => rule.max(3)
+
                 },
                 {
                     name: 'whoWeAreText',
