@@ -44,7 +44,7 @@ const Page = async ({ params }) => {
         <div>
             <NavBar/>
             <div className="flex flex-col items-center justify-center text-center bg-[#F5F5F5]">
-                {post?.title && <h1 className="text-4xl mt-[150px] w-[60vw] font-bold capitalize mb-4 px-4 mx-4 md:mx-8">{post?.title}</h1>}
+                {post?.title && <h1 className="text-4xl mt-[150px] w-[80vw] font-bold capitalize mb-4 px-4 mx-4 md:mx-8">{post?.title}</h1>}
                 {post?.date &&
                     <p className="m-2">{new Date(post.date).toLocaleDateString("en-US", {
                         year: "numeric",
