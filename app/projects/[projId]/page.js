@@ -96,11 +96,11 @@ const Page = async ({ params }) => {
                 </div>
 
             </div>
-            <div className="w-full h-full flex justify-center items-center">
+            {/* <div className="w-full h-full flex justify-center items-center">
                 <div className="w-[60vw] h-[calc(60vw*0.75)]">
                     <Matterport/>
                 </div>
-            </div> 
+            </div>  */}
             <div className={styles.ServDynTextCont}>
                 <div className={styles.PortableTextCont}>
                     {project?.bodyText && <PortableText value={project.bodyText} components={RichTextComponents}/>}
