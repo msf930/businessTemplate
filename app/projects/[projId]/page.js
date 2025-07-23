@@ -1,19 +1,23 @@
 
 
 import React from 'react';
-import {Button} from "@mui/material";
-import {client} from "@/sanity/lib/client";
-import NavBar from "@/components/NavBar";
-import SoloProjHero from "@/components/SoloProjHero";
-import {PortableText} from "next-sanity";
-import {RichTextComponents} from "@/components/RichTextComponents";
-import commaNumber from "comma-number";
-
 import Image from "next/image";
 
 import styles from "./styles.module.css";
+
+import {Button} from "@mui/material";
+import {client} from "@/sanity/lib/client";
+import {PortableText} from "next-sanity";
+import commaNumber from "comma-number";
+
+import NavBar from "@/components/NavBar";
+import SoloProjHero from "@/components/SoloProjHero";
+import {RichTextComponents} from "@/components/RichTextComponents";
 import ProjAction from "@/components/ProjAction";
 import Footer from "@/components/Footer";
+import Matterport from "@/components/Matterport";
+
+
 
 const PROJECT_QUERY = `*[_type == "projects" && url.current == $projId][0] {_id, title, description, mainImage {alt, asset -> { _id, url } }, bodyText, url, budget, duration, location, imageGallery[] { asset -> { _id, url  }, hotspot }, tag, testimonial, testimonialAuthor }`;
 const options = { next: { revalidate: 30 } };
@@ -92,6 +96,11 @@ const Page = async ({ params }) => {
                 </div>
 
             </div>
+            <div className="w-full h-full flex justify-center items-center">
+                <div className="w-[60vw] h-[calc(60vw*0.75)]">
+                    <Matterport/>
+                </div>
+            </div> 
             <div className={styles.ServDynTextCont}>
                 <div className={styles.PortableTextCont}>
                     {project?.bodyText && <PortableText value={project.bodyText} components={RichTextComponents}/>}
