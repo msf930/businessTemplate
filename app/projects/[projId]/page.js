@@ -19,7 +19,7 @@ import Matterport from "@/components/Matterport";
 
 
 
-const PROJECT_QUERY = `*[_type == "projects" && url.current == $projId][0] {_id, title, description, mainImage {alt, asset -> { _id, url } }, bodyText, url, budget, duration, location, imageGallery[] { asset -> { _id, url  }, hotspot }, tag, testimonial, testimonialAuthor }`;
+const PROJECT_QUERY = `*[_type == "projects" && url.current == $projId][0] {_id, title, description, mainImage {alt, asset -> { _id, url } }, bodyText, url, budget, duration, location, imageGallery[] { asset -> { _id, url  }, hotspot }, tag, testimonial, testimonialAuthor, matterportBefore, matterportAfter }`;
 const options = { next: { revalidate: 30 } };
 
 const Page = async ({ params }) => {
@@ -101,19 +101,43 @@ const Page = async ({ params }) => {
                     <Matterport/>
                 </div>
             </div>  */}
-            <div className="w-full h-full flex justify-center items-center">
-                <div className="w-[60vw] h-[calc(60vw*0.75)]">
+           
+            {project?.matterportBefore && 
+            <div className="w-full h-full flex flex-col justify-center items-center">
+                <div className="flex flex-col justify-center items-center m-8">
+                    <h1 className="text-2xl font-bold ">Virtual Tour</h1>
+                    <h2 className="text-lg font-bold ">Pre-Remodel</h2>
+                </div>
+                <div className="md:w-[60vw] md:h-[calc(60vw*0.75)] w-[90vw] h-[calc(90vw*0.75)]">
                     <iframe
-                        src="https://my.matterport.com/show/?m=iYVsMx9AE3R"
+                        src={project.matterportBefore}
                         width="100%"
                         height="100%"
                         frameborder="0"
                         allowfullscreen
                         allow="xr-spatial-tracking">
-
                     </iframe>
                 </div>
             </div>
+            }
+             {project?.matterportAfter && 
+            <div className="w-full h-full flex flex-col justify-center items-center">
+                <div className="flex flex-col justify-center items-center m-8">
+                    <h1 className="text-2xl font-bold ">Virtual Tour</h1>
+                    <h2 className="text-lg font-bold ">Post-Remodel</h2>
+                </div>
+                <div className="md:w-[60vw] md:h-[calc(60vw*0.75)] w-[90vw] h-[calc(90vw*0.75)]">
+                    <iframe
+                        src={project.matterportAfter}
+                        width="100%"
+                        height="100%"
+                        frameborder="0"
+                        allowfullscreen
+                        allow="xr-spatial-tracking">
+                    </iframe>
+                </div>
+            </div>
+            }
             <div className={styles.ServDynTextCont}>
                 <div className={styles.PortableTextCont}>
                     {project?.bodyText && <PortableText value={project.bodyText} components={RichTextComponents} />}

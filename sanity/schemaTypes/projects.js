@@ -73,6 +73,18 @@ export const projects = defineType({
             group: 'projectDetails',
         }),
         defineField({
+            name: 'matterportBefore',
+            type: 'string',
+            description: 'Matterport Before URL',
+            group: 'projectDetails',
+        }),
+        defineField({
+            name: 'matterportAfter',
+            type: 'string',
+            description: 'Matterport After URL',
+            group: 'projectDetails',
+        }),
+        defineField({
             name: 'mainImage',
             type: 'image',
             group: 'media',
