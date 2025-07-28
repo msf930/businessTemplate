@@ -7,8 +7,6 @@ import { MpSdk, setupSdk } from "@matterport/sdk";
 
 export default function Index() {
     const [sdk, setSdk] = useState();
-    const [horizontal, setHorizontal] = useState(45);
-    const [vertical, setVertical] = useState(15);
     const container = useRef(null);
     let started = false;
   

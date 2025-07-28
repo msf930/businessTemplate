@@ -21,7 +21,7 @@ const SoloProjHero = ({ image, altText }) => {
             {/*<h1 className={styles.ServeDynHeroText}>{title}</h1>*/}
           <motion.div className={styles.ServDynImg}>
               <motion.div className={styles.ServDynImgParallax} style={{y: backgroundY}}>
-                  <Image alt={altText} src={image}  objectFit="cover" fill />
+                  <Image loading="eager" alt={altText} src={image}  objectFit="cover" fill />
               </motion.div>
           </motion.div>
       </motion.div>

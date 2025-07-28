@@ -5,14 +5,14 @@ import Image from "next/image";
 
 import styles from "./styles.module.css";
 
-import {Button} from "@mui/material";
-import {client} from "@/sanity/lib/client";
-import {PortableText} from "next-sanity";
+import { Button } from "@mui/material";
+import { client } from "@/sanity/lib/client";
+import { PortableText } from "next-sanity";
 import commaNumber from "comma-number";
 
 import NavBar from "@/components/NavBar";
 import SoloProjHero from "@/components/SoloProjHero";
-import {RichTextComponents} from "@/components/RichTextComponents";
+import { RichTextComponents } from "@/components/RichTextComponents";
 import ProjAction from "@/components/ProjAction";
 import Footer from "@/components/Footer";
 import Matterport from "@/components/Matterport";
@@ -26,25 +26,25 @@ const Page = async ({ params }) => {
 
     const { projId } = await params;
 
-    const project = await client.fetch(PROJECT_QUERY, {projId}, options);
+    const project = await client.fetch(PROJECT_QUERY, { projId }, options);
 
     let budgetString = 0;
-    if(project?.budget){
-        budgetString =  commaNumber(project.budget);
+    if (project?.budget) {
+        budgetString = commaNumber(project.budget);
     }
 
     return (
         <div>
-            <NavBar/>
+            <NavBar />
             <div className="flex flex-col justify-center items-center text-center bg-[#F5F5F5]">
                 {project?.title && <h1 className="text-4xl mt-28 font-bold capitalize mb-4 px-4">{project?.title}</h1>}
                 {project?.description && <p className=" mb-10 px-4 w-[90vw] md:w-[60vw]">{project?.description}</p>}
             </div>
-            <SoloProjHero image={project.mainImage.asset.url} altText={project.mainImage.alt ? project.mainImage.alt : project.title}/>
+            <SoloProjHero image={project.mainImage.asset.url} altText={project.mainImage.alt ? project.mainImage.alt : project.title} />
             <div className={styles.ProjectInfoContainer}>
                 <div className={styles.ProjectTitleContainer}>
                     {project?.title &&
-                    <h1 className={styles.ProjectTitle}>{project?.title}</h1>
+                        <h1 className={styles.ProjectTitle}>{project?.title}</h1>
                     }
                     {project?.tag &&
                         <div className={styles.ProjectTagCont}>
@@ -101,9 +101,22 @@ const Page = async ({ params }) => {
                     <Matterport/>
                 </div>
             </div>  */}
+            <div className="w-full h-full flex justify-center items-center">
+                <div className="w-[60vw] h-[calc(60vw*0.75)]">
+                    <iframe
+                        src="https://my.matterport.com/show/?m=iYVsMx9AE3R"
+                        width="100%"
+                        height="100%"
+                        frameborder="0"
+                        allowfullscreen
+                        allow="xr-spatial-tracking">
+
+                    </iframe>
+                </div>
+            </div>
             <div className={styles.ServDynTextCont}>
                 <div className={styles.PortableTextCont}>
-                    {project?.bodyText && <PortableText value={project.bodyText} components={RichTextComponents}/>}
+                    {project?.bodyText && <PortableText value={project.bodyText} components={RichTextComponents} />}
                 </div>
             </div>
             {project?.testimonial && project?.testimonialAuthor && (
@@ -120,6 +133,7 @@ const Page = async ({ params }) => {
                                 <Image
                                     src={image.asset.url}
                                     alt={project.title}
+                                    loading="lazy"
                                     fill
                                     objectFit="cover"
                                     objectPosition={`${image.hotspot?.x * 100}% ${image.hotspot?.y * 100}%`}
@@ -130,8 +144,8 @@ const Page = async ({ params }) => {
                     </div>
                 </div>
             </div>
-            <ProjAction/>
-            <Footer/>
+            <ProjAction />
+            <Footer />
 
         </div>
     );
