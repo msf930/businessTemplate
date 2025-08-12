@@ -161,8 +161,11 @@ const Page = async ({ params }) => {
                                     fill
                                     objectFit="cover"
                                     objectPosition={`${image.hotspot?.x * 100}% ${image.hotspot?.y * 100}%`}
+                                    style={{zIndex: 100}}
                                 />
-                                {/*<Image  src={image.asset.url} alt={project.title} fill objectFit="cover" objectPosition={`50% 20%`}/>*/}
+                                <div className={styles.GalleryImgLoading}>
+                                    
+                                </div>
                             </div>
                         ))}
                     </div>
